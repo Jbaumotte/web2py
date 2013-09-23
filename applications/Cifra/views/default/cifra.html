@@ -1,0 +1,17 @@
+{{extend 'layout.html'}}
+<p>
+    {{=session.letra}}
+</p>
+
+<div id="left_sidebar">
+    {{block right_sidebar}}
+    <form id="evernote">
+        <INPUT type="button" value="Evernote"
+            onclick="ajax('evernote',[''],':eval')"/>
+    </form>
+    <form id="pdf">
+        <INPUT type="button" value="PDF"
+            onclick="ajax('to_pdf',[''],':eval')"/>
+    </form>
+    {{end}}
+</div>

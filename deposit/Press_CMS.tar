@@ -1,0 +1,444 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+ <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" >
+ <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" >
+ 
+ <meta name="ROBOTS" content="NOARCHIVE">
+ 
+ <link rel="icon" type="image/vnd.microsoft.icon" href="http://www.gstatic.com/codesite/ph/images/phosting.ico">
+ 
+ 
+ <script type="text/javascript">
+ 
+ 
+ 
+ 
+ var codesite_token = null;
+ 
+ 
+ var CS_env = {"assetVersionPath":"http://www.gstatic.com/codesite/ph/15490321151412058579","token":null,"relativeBaseUrl":"","domainName":null,"loggedInUserEmail":null,"projectName":"instant-press","projectHomeUrl":"/p/instant-press","assetHostPath":"http://www.gstatic.com/codesite/ph","profileUrl":null};
+ var _gaq = _gaq || [];
+ _gaq.push(
+ ['siteTracker._setAccount', 'UA-18071-1'],
+ ['siteTracker._trackPageview']);
+ 
+ (function() {
+ var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+ ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+ (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ga);
+ })();
+ 
+ </script>
+ 
+ 
+ <title>
+ instant-press -
+ 
+ 
+ Instant Press is an open source CMS developed in Web2py Framework (Python language) - Google Project Hosting
+ </title>
+ <link type="text/css" rel="stylesheet" href="http://www.gstatic.com/codesite/ph/15490321151412058579/css/core.css">
+ 
+ <link type="text/css" rel="stylesheet" href="http://www.gstatic.com/codesite/ph/15490321151412058579/css/ph_detail.css" >
+ 
+ 
+ 
+ 
+<!--[if IE]>
+ <link type="text/css" rel="stylesheet" href="http://www.gstatic.com/codesite/ph/15490321151412058579/css/d_ie.css" >
+<![endif]-->
+ <style type="text/css">
+ .menuIcon.off { background: no-repeat url(http://www.gstatic.com/codesite/ph/images/dropdown_sprite.gif) 0 -42px }
+ .menuIcon.on { background: no-repeat url(http://www.gstatic.com/codesite/ph/images/dropdown_sprite.gif) 0 -28px }
+ .menuIcon.down { background: no-repeat url(http://www.gstatic.com/codesite/ph/images/dropdown_sprite.gif) 0 0; }
+ 
+ 
+ .psicon-container {
+ min-width:24px;
+ }
+
+ 
+ </style>
+</head>
+<body class="t1">
+<script type="text/javascript">
+ window.___gcfg = {lang: 'en'};
+ (function() 
+ {var po = document.createElement("script");
+ po.type = "text/javascript"; po.async = true;po.src = "https://apis.google.com/js/plusone.js";
+ var s = document.getElementsByTagName("script")[0];
+ s.parentNode.insertBefore(po, s);
+ })();
+</script>
+<div class="headbg">
+
+ <div id="gaia">
+ 
+
+ <span>
+ 
+ 
+ <a href="#" id="projects-dropdown" onclick="return false;"><u>My favorites</u> <small>&#9660;</small></a>
+ | <a href="https://www.google.com/accounts/ServiceLogin?service=code&amp;ltmpl=phosting&amp;continue=http%3A%2F%2Fcode.google.com%2Fp%2Finstant-press%2F&amp;followup=http%3A%2F%2Fcode.google.com%2Fp%2Finstant-press%2F" onclick="_CS_click('/gb/ph/signin');"><u>Sign in</u></a>
+ 
+ </span>
+
+ </div>
+
+ <div class="gbh" style="left: 0pt;"></div>
+ <div class="gbh" style="right: 0pt;"></div>
+ 
+ 
+ <div style="height: 1px"></div>
+<!--[if lte IE 7]>
+<div style="text-align:center;">
+Your version of Internet Explorer is not supported. Try a browser that
+contributes to open source, such as <a href="http://www.firefox.com">Firefox</a>,
+<a href="http://www.google.com/chrome">Google Chrome</a>, or
+<a href="http://code.google.com/chrome/chromeframe/">Google Chrome Frame</a>.
+</div>
+<![endif]-->
+
+
+
+ <table style="padding:0px; margin: 0px 0px 10px 0px; width:100%" cellpadding="0" cellspacing="0"
+ itemscope itemtype="http://schema.org/CreativeWork">
+ <tr style="height: 58px;">
+ 
+ 
+ 
+ <td id="plogo">
+ <link itemprop="url" href="/p/instant-press">
+ <a href="/p/instant-press/">
+ 
+ 
+ <img src="/p/instant-press/logo?cct=1290004331"
+ alt="Logo" itemprop="image">
+ 
+ </a>
+ </td>
+ 
+ <td style="padding-left: 0.5em">
+ 
+ <div id="pname">
+ <a href="/p/instant-press/"><span itemprop="name">instant-press</span></a>
+ </div>
+ 
+ <div id="psum">
+ <a id="project_summary_link"
+ href="/p/instant-press/"><span itemprop="description">Instant Press is an open source CMS developed in Web2py Framework (Python language)</span></a>
+ 
+ </div>
+ 
+ 
+ </td>
+ <td style="white-space:nowrap;text-align:right; vertical-align:bottom;">
+ 
+ <form action="/hosting/search">
+ <input size="30" name="q" value="" type="text">
+ 
+ <input type="submit" name="projectsearch" value="Search projects" >
+ </form>
+ 
+ </tr>
+ </table>
+
+</div>
+
+ 
+<div id="mt" class="gtb"> 
+ <a href="/p/instant-press/" class="tab active">Project&nbsp;Home</a>
+ 
+ 
+ 
+ 
+ <a href="/p/instant-press/downloads/list" class="tab ">Downloads</a>
+ 
+ 
+ 
+ 
+ 
+ <a href="/p/instant-press/w/list" class="tab ">Wiki</a>
+ 
+ 
+ 
+ 
+ 
+ <a href="/p/instant-press/issues/list"
+ class="tab ">Issues</a>
+ 
+ 
+ 
+ 
+ 
+ <a href="/p/instant-press/source/checkout"
+ class="tab ">Source</a>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ <div class=gtbc></div>
+</div>
+<table cellspacing="0" cellpadding="0" width="100%" align="center" border="0" class="st">
+ <tr>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ <td class="subt">
+ <div class="st1">
+ <div class="isf">
+ <span class="inst1">
+ <a href="/p/instant-press/">Summary</a>
+ </span>
+ 
+ 
+ &nbsp;
+ <span class="inst3">
+ <a href="/p/instant-press/people/list">People</a>
+ </span>
+ 
+ 
+ </div>
+</div>
+
+ </td>
+ 
+ 
+ <td align="right" valign="top" class="bevel-right"></td>
+ </tr>
+</table>
+
+
+<script type="text/javascript">
+ var cancelBubble = false;
+ function _go(url) { document.location = url; }
+</script>
+<div id="maincol"
+ 
+>
+
+ 
+
+
+
+
+
+<table width="100%">
+ <tr class="pscontent">
+ <td class="pscolumnl">
+ 
+ <div class="phead">Project Information</div>
+ 
+ 
+ <div class="psicon" style="min-height:23px">
+ <g:plusone size="small" annotation="inline" width="200"></g:plusone>
+ </div>
+ 
+ 
+ <ul class="pslist">
+ 
+ <li class="psmeta">
+ <a href="/p/instant-press/feeds">Project feeds</a>
+ </li>
+ <li class="psgap"/>
+ 
+ 
+ 
+ <li class="psmeta"><b>Code license</b></li>
+ <li class="psmeta">
+ <a href="http://www.gnu.org/licenses/old-licenses/gpl-2.0.html" rel="nofollow">GNU GPL v2</a>
+ 
+ </li>
+ <li class="psgap"/>
+ 
+ 
+ <li class="psmeta"><b>Content license</b></li>
+ <li class="psmeta">
+ <a href="http://creativecommons.org/licenses/by/3.0/" rel="nofollow">Creative Commons 3.0 BY</a>
+ </li>
+ <li class="psgap"/>
+ 
+ 
+ 
+ 
+ 
+ <li class="psmeta">
+ <span id="project_labels">
+ <b>Labels</b><br/>
+ 
+ <a class="label"
+ href="/hosting/search?q=label:cms">cms</a>, 
+ 
+ <a class="label"
+ href="/hosting/search?q=label:Blogging">Blogging</a>, 
+ 
+ <a class="label"
+ href="/hosting/search?q=label:web2py">web2py</a>, 
+ 
+ <a class="label"
+ href="/hosting/search?q=label:Python">Python</a>, 
+ 
+ <a class="label"
+ href="/hosting/search?q=label:Website">Website</a>, 
+ 
+ <a class="label"
+ href="/hosting/search?q=label:AppEngine">AppEngine</a>, 
+ 
+ <a class="label"
+ href="/hosting/search?q=label:CKeditor">CKeditor</a>, 
+ 
+ <a class="label"
+ href="/hosting/search?q=label:AJAX">AJAX</a>, 
+ 
+ <a class="label"
+ href="/hosting/search?q=label:jquery-ui">jquery-ui</a>, 
+ 
+ <a class="label"
+ href="/hosting/search?q=label:wysiwyg">wysiwyg</a>, 
+ 
+ <a class="label"
+ href="/hosting/search?q=label:Sqlite">Sqlite</a>, 
+ 
+ <a class="label"
+ href="/hosting/search?q=label:Content">Content</a>, 
+ 
+ <a class="label"
+ href="/hosting/search?q=label:Management">Management</a>
+ 
+ </span>
+ </li>
+ <li class="psgap"/>
+ 
+ 
+ </ul>
+ <div class="psicon">
+ <div class="psicon-container goog-inline-block">
+ <div style="float:right" class="SPRITE_people-y16 goog-inline-block vt"></div>
+ </div>
+ <span><b>Members</b></span>
+ </div>
+ <ul class="pslist">
+ 
+ 
+ 
+ 
+
+ <a class="userlink"
+ href="/u/108158936205897534337/">mulone.m...@gmail.com</a
+>
+ 
+ 
+ 
+ 
+ <li class="psmeta">
+ <a href="people/list">2 contributors</a>
+ </li>
+ 
+ <li class="psgap"/>
+ 
+ 
+ </ul>
+ 
+ 
+ <div class="phead pfeatured">Featured</div>
+ 
+ <div class="psicon">
+ <div class="psicon-container goog-inline-block">
+ <div style="float:right" class="SPRITE_filedownload-g16 goog-inline-block vt"></div>
+ </div>
+ <span><b>Downloads</b></span>
+ </div>
+ <ul class="pslist">
+ 
+ <li class="psmeta nowrap">
+ <a title="Download" href="//instant-press.googlecode.com/files/instantpress_beta6.zip" onclick="_gaq.push(['siteTracker._trackEvent', 'Download - Downloaded', '//instant-press.googlecode.com/files/instantpress_beta6.zip', 'Featured, Type-Source']);">
+ </a>
+ <a href="downloads/detail?name=instantpress_beta6.zip"
+ title="Instant Press Beta 6 Source">instantpress_beta6.zip</a>
+ </li>
+ 
+ <li class="psmeta nowrap">
+ <a title="Download" href="//instant-press.googlecode.com/files/web2py.app.instantpress_beta6.w2p" onclick="_gaq.push(['siteTracker._trackEvent', 'Download - Downloaded', '//instant-press.googlecode.com/files/web2py.app.instantpress_beta6.w2p', 'Featured, Type-Package']);">
+ </a>
+ <a href="downloads/detail?name=web2py.app.instantpress_beta6.w2p"
+ title="Instant Press Beta 6">web2py.app.instantpress_beta6.w2p</a>
+ </li>
+ 
+ <li class="psmeta"><a href="downloads/list">Show all &raquo</a></li>
+ <li class="psgap"/>
+ </ul>
+ 
+ 
+ 
+ 
+ 
+ <div class="phead">Links</div>
+ <ul class="pslist" style="white-space:nowrap">
+ 
+ <li class="psmeta"><b>Blogs</b></li>
+ 
+ <li class="psmeta">
+ <a href="http://martin.tecnodoc.com.ar" rel="nofollow">Instant Blog</a>
+ </li>
+ 
+ <li class="psgap"/>
+ 
+ 
+ 
+ </ul>
+ 
+ </td>
+ <td id="wikicontent" class="psdescription">
+ <h2><a name="Overview"></a>Overview<a href="#Overview" class="section_anchor"></a></h2><p>Instant Press is an open source CMS developed in Web2py Framework (Python language). Instant Press is <strong>simple</strong>, <strong>easy to use</strong> and <strong>attractive</strong>. Upload to your web2py framework or to Google Application Engine and you are ready to start! </p><p><strong>Last version: Beta 6</strong> </p><h2><a name="Main_Features"></a>Main Features<a href="#Main_Features" class="section_anchor"></a></h2><ul><li>Free and Open Source </li><li>Manage articles, posts, and pages </li><li>Manage users, categories, links, comments, uploads, styles </li><li>Change logo, and front page without editing source code. </li><li>Comments can be <strong>disable</strong>, or use <strong>disqus</strong> as comment system. </li><li>Many widgets: addthis, last posts, links, tags, categories, archives. </li><li>WYSIWYG editing, using  <a href="http://www.ckeditor.com" rel="nofollow">CKeditor</a> </li><li>Multiple register method: <strong>Recaptcha</strong>, <strong>Confirm by mail</strong>, etc. </li><li>Avatars. </li><li>Using <a href="http://html5boilerplate.com" rel="nofollow">html5boilerplate.com</a> best practices baked in: cross-browser normalization, performance optimizations as a base template. </li><li>Customize, come with 2 layout ready. Make your own customization. See customization. </li><li>Developed in pure <strong>python</strong> using web2py as a framework. </li><li><strong>Ajax</strong>, use jquery and jquery-ui. </li><li>Visual notifications. </li><li>Feed articles and comments. </li></ul><p>  </p><h2><a name="Requirements"></a>Requirements<a href="#Requirements" class="section_anchor"></a></h2><ul><li>Web2py Enterprise Framework, you can download from <a href="http://www.web2py.com" rel="nofollow">here</a> </li><li>Python 2.5, 2.6, 2.7  </li></ul><p><strong>From web2py:</strong> Connect to different databases. Web2py talks to SQLite, PostgreSQL, MySQL, MSSQL, FireBird, Oracle, IBM DB2, Informix, Ingres. Runs with Apache, Lighttpd, Cherokee and almost any other web server via CGI, FastCGI, WSGI, mod_proxy, and/or mod_python. Runs on Windows, Mac, Unix/Linux, Google App Engine, Amazon EC2, and almost any web hosting via Python 2.4/2.5/2.6/2.7, or Java with Jython. </p><h2><a name="Tour_in_Instant_Press"></a>Tour in Instant Press<a href="#Tour_in_Instant_Press" class="section_anchor"></a></h2><p>
+<iframe width="425" height="344" frameborder="0"
+ src="http://www.youtube.com/embed/gtdJ5JCxiJQ">
+</iframe>
+ </p><h2><a name="Demo"></a>Demo<a href="#Demo" class="section_anchor"></a></h2><p>in Appengine: <a href="http://instant2press.appspot.com/" rel="nofollow">http://instant2press.appspot.com/</a> </p><h2><a name="Sites_running_instantpress"></a>Sites running instantpress<a href="#Sites_running_instantpress" class="section_anchor"></a></h2><ul><li><a href="http://martin.tecnodoc.com.ar/" rel="nofollow">http://martin.tecnodoc.com.ar/</a> </li><li><a href="http://www.tecnodoc.com.ar/" rel="nofollow">http://www.tecnodoc.com.ar/</a> </li></ul><h2><a name="Made_with"></a>Made with<a href="#Made_with" class="section_anchor"></a></h2><p><a href="http://wingware.com" rel="nofollow"><img src="http://wingware.com/images/wingware-logo-80x26.png" /></a> </p><h2><a name="Screenshots"></a>Screenshots<a href="#Screenshots" class="section_anchor"></a></h2><p><a href="http://img259.imageshack.us/img259/2190/01main.png" rel="nofollow"><img src="http://img140.imageshack.us/img140/2190/01main.png" /></a> </p><p><a href="http://img177.imageshack.us/img177/1483/02login.png" rel="nofollow"><img src="http://img844.imageshack.us/img844/1483/02login.png" /></a> </p><p><a href="http://img718.imageshack.us/img718/3801/03info.png" rel="nofollow"><img src="http://img37.imageshack.us/img37/3801/03info.png" /></a> </p><p><a href="http://img98.imageshack.us/img98/8742/04articles.png" rel="nofollow"><img src="http://img408.imageshack.us/img408/8742/04articles.png" /></a> </p><p><a href="http://img149.imageshack.us/img149/6620/05categories.png" rel="nofollow"><img src="http://img219.imageshack.us/img219/6620/05categories.png" /></a> </p><p><a href="http://img38.imageshack.us/img38/604/06users.png" rel="nofollow"><img src="http://img826.imageshack.us/img826/604/06users.png" /></a> </p><p><a href="http://img156.imageshack.us/img156/9605/07uploads.png" rel="nofollow"><img src="http://img145.imageshack.us/img145/9605/07uploads.png" /></a> </p><p><a href="http://img684.imageshack.us/img684/4144/08links.png" rel="nofollow"><img src="http://img842.imageshack.us/img842/4144/08links.png" /></a> </p><p><a href="http://img831.imageshack.us/img831/6650/09styles.png" rel="nofollow"><img src="http://img259.imageshack.us/img259/6650/09styles.png" /></a> </p><p><a href="http://img257.imageshack.us/img257/7849/10ckeditor.png" rel="nofollow"><img src="http://img96.imageshack.us/img96/7849/10ckeditor.png" /></a> </p><p><a href="http://img826.imageshack.us/img826/5149/11multiplewindows.png" rel="nofollow"><img src="http://img218.imageshack.us/img218/5149/11multiplewindows.png" /></a> </p><p><a href="http://img826.imageshack.us/img826/3402/12showpages.png" rel="nofollow"><img src="http://img543.imageshack.us/img543/3402/12showpages.png" /></a> </p><p><a href="http://img256.imageshack.us/img256/9291/13admincomments.png" rel="nofollow"><img src="http://img827.imageshack.us/img827/9291/13admincomments.png" /></a> </p><p><a href="http://img826.imageshack.us/img826/4461/14searching.png" rel="nofollow"><img src="http://img69.imageshack.us/img69/4461/14searching.png" /></a> </p><p><a href="http://img339.imageshack.us/img339/9592/15panelcomments.png" rel="nofollow"><img src="http://img251.imageshack.us/img251/9592/15panelcomments.png" /></a> </p>
+ </td>
+ </tr>
+</table>
+<script src="http://www.gstatic.com/codesite/ph/15490321151412058579/js/prettify/prettify_core_compiled.js"></script>
+<script type="text/javascript">
+ prettyPrint();
+</script>
+
+ 
+ 
+ 
+ <script type="text/javascript" src="http://www.gstatic.com/codesite/ph/15490321151412058579/js/ph_core.js"></script>
+ 
+ 
+ 
+ 
+</div> 
+
+<div id="footer" dir="ltr">
+ <div class="text">
+ <a href="/projecthosting/terms.html">Terms</a> -
+ <a href="http://www.google.com/privacy.html">Privacy</a> -
+ <a href="/p/support/">Project Hosting Help</a>
+ </div>
+</div>
+ <div class="hostedBy" style="margin-top: -20px;">
+ <span style="vertical-align: top;">Powered by <a href="http://code.google.com/projecthosting/">Google Project Hosting</a></span>
+ </div>
+
+ 
+ 
+
+
+ 
+ </body>
+</html>
+

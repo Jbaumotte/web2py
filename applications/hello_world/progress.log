@@ -1,0 +1,25 @@
+[2013-09-15 12:12:57] START
+[2013-09-15 12:14:50] EDIT hello_world/controllers/default.py: 0
+[2013-09-15 12:14:51] EDIT hello_world/controllers/default.py: 0
+[2013-09-15 12:14:56] EDIT hello_world/controllers/default.py: 0
+[2013-09-15 18:17:09] EDIT hello_world/models/db.py: 0
+[2013-09-16 10:53:22] EDIT hello_world/controllers/default.py: 0
+[2013-09-16 10:53:48] EDIT hello_world/controllers/default.py: 0
+[2013-09-16 10:56:52] EDIT hello_world/controllers/default.py: 0
+[2013-09-16 21:54:41] EDIT hello_world/models/db.py: 3
+[2013-09-16 21:58:18] EDIT hello_world/models/db.py: 4
+[2013-09-16 22:01:45] CREATE default/display_your_form.html: 0
+[2013-09-16 22:03:07] EDIT hello_world/views/default/display_your_form.html: 6
+[2013-09-16 22:09:45] EDIT hello_world/controllers/default.py: 3
+[2013-09-16 22:37:54] EDIT hello_world/views/default/display_your_form.html: 5
+[2013-09-16 22:39:26] EDIT hello_world/controllers/default.py: 6
+[2013-09-16 22:42:07] EDIT hello_world/views/default/display_your_form.html: 0
+[2013-09-16 22:42:39] EDIT hello_world/views/default/display_your_form.html: 0
+[2013-09-16 22:47:43] EDIT hello_world/models/db.py: 0
+[2013-09-16 23:02:42] EDIT hello_world/controllers/default.py: 1
+[2013-09-16 23:06:44] EDIT hello_world/controllers/default.py: 0
+[2013-09-16 23:09:35] EDIT hello_world/controllers/default.py: 3
+[2013-09-17 15:19:42] EDIT hello_world/controllers/default.py: -13
+[2013-09-22 22:44:09] EDIT hello_world/models/db.py: -1
+[2013-09-22 23:17:42] EDIT hello_world/models/db.py: 1
+[2013-09-22 23:21:03] EDIT hello_world/models/db.py: -2

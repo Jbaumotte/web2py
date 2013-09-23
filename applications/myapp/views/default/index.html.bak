@@ -1,0 +1,10 @@
+<html>
+   <head></head>
+   <body>
+      <h1>{{=message}}</h1>
+      <h2>Number of visits: {{=counter}}</h2>
+      <form action="first">
+       <button type="submit">First</button>
+       </form>
+   </body>
+</html>

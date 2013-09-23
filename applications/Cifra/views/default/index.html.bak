@@ -1,0 +1,11 @@
+{{extend 'layout.html'}}
+{{=form}}
+
+<html>
+   <head></head>
+   <body>
+       <form action="first">
+       <button type="submit">Go to First!</button>
+       </form>
+   </body>
+</html>
