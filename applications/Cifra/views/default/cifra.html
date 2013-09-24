@@ -1,3 +1,14 @@
+{{block head}}
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Lily Script One">
+    <style>
+      #header {
+        font-family: 'Lily Script One';
+        font-size: 48px;
+      }
+    </style>
+{{end}}
+
+
 {{extend 'layout.html'}}
 <p>
     {{=session.letra}}
@@ -5,13 +16,13 @@
 
 <div id="left_sidebar">
     {{block right_sidebar}}
-    <form id="evernote">
-        <INPUT type="button" value="Evernote"
+    <form >
+        <INPUT id="evernote" type="button" value=""
             onclick="ajax('evernote',[''],':eval')"/>
     </form>
-    <form id="pdf">
-        <INPUT type="button" value="PDF"
-            onclick="ajax('to_pdf',[''],':eval')"/>
+    <br>
+    <form action="get_me_a_pdf">
+        <button id="pdf_button" type="submit"></button>
     </form>
     {{end}}
 </div>

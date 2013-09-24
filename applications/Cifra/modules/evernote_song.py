@@ -50,8 +50,9 @@ def evernote_song(title, band, song):
     note.content += '<en-note>'
     note.content += title+"<br></br>"
     note.content += band+"<br></br>"
+    note.content += "<pre>"
     note.content += song.replace("\n", "\n <br></br>")
-    note.content += '</en-note>'
+    note.content += '</pre></en-note>'
 
     # Finally, send the new note to Evernote using the createNote method
     # The new Note object that is returned will contain server-generated

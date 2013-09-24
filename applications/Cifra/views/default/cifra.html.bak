@@ -5,12 +5,13 @@
 
 <div id="left_sidebar">
     {{block right_sidebar}}
-            <!--<form action="evernote">
-           <button type="submit">Evernote</button>-->
-            <Form>
-                <INPUT type="button" value="Evernote"
-                onclick="ajax('evernote',[''],':eval')"/>
-        </form>
-        <!--<div id="target"></div>-->
+    <form >
+        <INPUT id="evernote" type="button" value=""
+            onclick="ajax('evernote',[''],':eval')"/>
+    </form>
+    <br>
+    <form action="get_me_a_pdf">
+        <button id="pdf_button" type="submit"></button>
+    </form>
     {{end}}
 </div>

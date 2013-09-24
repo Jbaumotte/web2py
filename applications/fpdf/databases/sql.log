@@ -1,0 +1,92 @@
+timestamp: 2010-08-12T18:15:14.561217
+CREATE TABLE auth_user(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    first_name CHAR(128),
+    last_name CHAR(128),
+    email CHAR(512),
+    password CHAR(512),
+    registration_key CHAR(512),
+    reset_password_key CHAR(512)
+);
+success!
+timestamp: 2010-08-12T18:15:14.694825
+CREATE TABLE auth_group(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    role CHAR(512),
+    description TEXT
+);
+success!
+timestamp: 2010-08-12T18:15:14.772553
+CREATE TABLE auth_membership(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_id INTEGER REFERENCES auth_user(id) ON DELETE CASCADE,
+    group_id INTEGER REFERENCES auth_group(id) ON DELETE CASCADE
+);
+success!
+timestamp: 2010-08-12T18:15:14.879760
+CREATE TABLE auth_permission(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    group_id INTEGER REFERENCES auth_group(id) ON DELETE CASCADE,
+    name CHAR(512),
+    table_name CHAR(512),
+    record_id INTEGER
+);
+success!
+timestamp: 2010-08-12T18:15:14.973039
+CREATE TABLE auth_event(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    time_stamp TIMESTAMP,
+    client_ip CHAR(512),
+    user_id INTEGER REFERENCES auth_user(id) ON DELETE CASCADE,
+    origin CHAR(512),
+    description TEXT
+);
+success!
+timestamp: 2010-09-10T11:59:11.929905
+CREATE TABLE pdf_template(
+    pdf_template_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    title CHAR(512),
+    format CHAR(512)
+);
+success!
+timestamp: 2010-09-10T12:00:46.649330
+CREATE TABLE pdf_element(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    pdf_template_id INTEGER REFERENCES pdf_template(pdf_template_id) ON DELETE CASCADE,
+    name CHAR(512),
+    type CHAR(2),
+    x1 DOUBLE,
+    y1 DOUBLE,
+    x2 DOUBLE,
+    y2 DOUBLE,
+    font CHAR(512),
+    size DOUBLE,
+    bold CHAR(1),
+    italic CHAR(1),
+    underline CHAR(1),
+    foreground INTEGER,
+    background INTEGER,
+    align CHAR(1),
+    text TEXT,
+    priority INTEGER
+);
+success!
+timestamp: 2013-09-23T12:45:11.898118
+ALTER TABLE auth_user ADD registration_id CHAR(512);
+success!
+success!
+success!
+success!
+success!
+timestamp: 2013-09-23T12:45:12.350128
+CREATE TABLE auth_cas(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_id INTEGER REFERENCES auth_user (id) ON DELETE CASCADE,
+    created_on TIMESTAMP,
+    service CHAR(512),
+    ticket CHAR(512),
+    renew CHAR(1)
+);
+success!
+success!
+success!

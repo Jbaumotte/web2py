@@ -8,30 +8,32 @@ def make_pdf(name, nome_musica, letra):
     >>> make_pdf("Hello world!")
 
     '''
-    from reportlab.platypus import *
-    from reportlab.lib.styles import getSampleStyleSheet
-    from reportlab.rl_config import defaultPageSize
-    from reportlab.lib.units import inch, mm
-    from reportlab.lib.enums import TA_LEFT, TA_RIGHT, TA_CENTER, TA_JUSTIFY
-    from reportlab.lib import colors
-    from uuid import uuid4
-    from cgi import escape
-    import os
+    from gluon.contrib.pyfpdf import FPDF, HTMLMixin
 
-    letra = letra.replace("\r", "").replace("\t", "")
+    # create a custom class with the required functionalities
+    class MyFPDF(FPDF, HTMLMixin):
+        def header(self): 
+            "hook to draw custom page header (logo and title)"
+            logo=os.path.join(request.env.web2py_path,"gluon","contrib","pyfpdf","tutorial","logo_pb.png")
+            self.image(logo,10,8,33)
+            self.set_font('Arial','B',15)
+            self.cell(65) # padding
+            self.cell(60,10,response.title,1,0,'C')
+            self.ln(20)
 
+        def footer(self):
+            "hook to draw custom page footer (printing page numbers)"
+            self.set_y(-15)
+            self.set_font('Arial','I',8)
+            txt = 'Page %s of %s' % (self.page_no(), self.alias_nb_pages())
+            self.cell(0,10,txt,0,0,'C')
 
-    name = "Hello"
-    styles = getSampleStyleSheet()
-    tmpfilename=os.path.join(request.folder,'private',str(uuid4()))
-    doc = SimpleDocTemplate(tmpfilename)
-    story = []
-    story.append(Paragraph(escape(title),styles["Title"]))
-    story.append(Paragraph(escape(heading),styles["Heading2"]))
-    story.append(Paragraph(escape(text),styles["Normal"]))
-    story.append(Spacer(1,2*inch))
-    doc.build(story)
-    data = open(tmpfilename,"rb").read()
-    os.unlink(tmpfilename)
-    response.headers['Content-Type']='application/pdf'
-    return data
+        response.title = name
+        pdf=MyFPDF()
+        # create a page and serialize/render HTML objects
+        pdf.add_page()
+        pdf.write_html(str(XML(letra, sanitize=False)))
+
+        # prepare PDF to download:
+        response.headers['Content-Type']='application/pdf'
+        return pdf.output(dest='S')

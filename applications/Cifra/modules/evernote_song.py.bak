@@ -48,7 +48,8 @@ def evernote_song(title, band, song):
     note.content += '<!DOCTYPE en-note SYSTEM ' \
         '"http://xml.evernote.com/pub/enml2.dtd">'
     note.content += '<en-note>'
-    note.content += title+" - "+band+"<br></br>"
+    note.content += title+"<br></br>"
+    note.content += band+"<br></br>"
     note.content += song.replace("\n", "\n <br></br>")
     note.content += '</en-note>'
 

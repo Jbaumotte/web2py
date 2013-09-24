@@ -1,0 +1,22 @@
+{{
+## this doesn't work, pdf corrupt...
+try:
+    from gluon.contrib.pyfpdf import FPDF, HTMLMixin
+
+    class MyFPDF(FPDF, HTMLMixin):
+        pass
+                
+    pdf=MyFPDF()
+    #First page
+    pdf.add_page()
+    #pdf.write_html(str(XML(chart, sanitize=False)))
+    #print(XML(chart, sanitize=False))
+    #print(XML(table, sanitize=False))
+    ##pdf.write_html(str(XML(table, sanitize=False)))
+    response.headers['Content-Type']='application/pdf'
+    response.write(pdf.output(dest='S'))
+
+except:
+   raise
+   ##raise HTTP(405,'no pdf')
+}}
