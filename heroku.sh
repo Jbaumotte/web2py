@@ -1,6 +1,6 @@
 #!/bin/bash
 
-read -p "Choose your message to commit" msg
+read -p "Choose your message to commit: " msg
 virtualenv venv --distribute
 source venv/bin/activate
 pip freeze > requirements.txt
