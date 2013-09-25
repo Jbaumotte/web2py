@@ -307,3 +307,12 @@
 [2013-09-24 23:21:40] EDIT Cifra/modules/evernote_song.py: 0
 [2013-09-24 23:22:07] EDIT Cifra/modules/evernote_song.py: 0
 [2013-09-24 23:23:48] EDIT Cifra/modules/evernote_song.py: 0
+[2013-09-25 14:34:17] UPLOAD /Users/JoaoBtte/Documents/python/Hello/applications/Cifra/modules/ever_constants.py: 4
+[2013-09-25 15:15:57] UPLOAD /Users/JoaoBtte/Documents/python/Hello/applications/Cifra/modules/ever_ttypes.py: 5336
+[2013-09-25 15:16:30] UPLOAD /Users/JoaoBtte/Documents/python/Hello/applications/Cifra/modules/ever_client.py: 133
+[2013-09-25 15:19:01] EDIT Cifra/modules/evernote_song.py: 0
+[2013-09-25 15:20:31] DELETE Cifra/modules/ever_ttypes.py: -5336
+[2013-09-25 15:20:36] DELETE Cifra/modules/ever_constants.py: -4
+[2013-09-25 15:20:47] DELETE Cifra/modules/ever_client.py: -133
+[2013-09-25 15:21:20] EDIT Cifra/modules/evernote_song.py: 0
+[2013-09-25 15:21:59] EDIT Cifra/modules/evernote_song.py: 5

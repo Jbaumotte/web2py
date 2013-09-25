@@ -5,10 +5,11 @@
 
 import hashlib
 import binascii
-UserStoreConstants = local_import ('evernote.edam.userstore.constants')
-Types = local_import('evernote.edam.type.ttypes')
+import evernote.edam.userstore.constants as UserStoreConstants
+import evernote.edam.type.ttypes as Types
 
 from evernote.api.client import EvernoteClient
+
 
 def evernote_song(title, band, song):
 
