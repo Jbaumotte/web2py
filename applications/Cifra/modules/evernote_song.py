@@ -3,13 +3,6 @@
 # the song title as note title and song lyrics as note body
 #
 
-import hashlib
-import binascii
-import evernote.edam.userstore.constants as UserStoreConstants
-import evernote.edam.type.ttypes as Types
-
-from evernote.api.client import EvernoteClient
-
 
 def evernote_song(title, band, song):
     import hashlib

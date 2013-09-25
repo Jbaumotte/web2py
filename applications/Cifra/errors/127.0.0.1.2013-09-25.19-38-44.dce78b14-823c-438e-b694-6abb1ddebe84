@@ -1,0 +1,1041 @@
+(dp1
+S'output'
+p2
+S"<class 'socket.gaierror'> [Errno 8] nodename nor servname provided, or not known"
+p3
+sS'layer'
+p4
+S'/Users/JoaoBtte/Documents/python/Hello/applications/Cifra/controllers/default.py'
+p5
+sS'code'
+p6
+S'def user():\n    return dict(form=auth())\n\ndef index():\n    import cifra_club\n\n    form = SQLFORM.factory(Field(\'url\',\n                                 label=T(\'Insert the URL \'),\n                                 requires=IS_MATCH(\'http://www.cifraclub.com.br/\', error_message=\'Desculpa, por enquanto, so Cifra Club\')))\n\n    if form.process().accepted:\n\n        cifra = cifra_club.get_song(form.vars.url)\n        ## cifra[0] = name; cifra[1] = nome_musica; cifra[2] = letra\n        session.name = cifra[0].title().split("-")[0]\n        session.banda = cifra[0].split("-")[1]\n        session.nome_musica = cifra[1]\n        session.letra = cifra[2].strip()\n        redirect(URL(\'cifra\'))\n    return dict(form=form)\n\n\ndef cifra():\n    response.title = "Minhas Cifras"\n    response.subtitles = session.name+"-"+session.banda\n    return dict()\n\ndef evernote():\n    import evernote_song\n    evernote_song.evernote_song(session.name, session.banda, session.letra)\n    response.flash=\'Gravado no Evernote!\'\n    return ("")\n\n\n\ndef get_me_a_pdf():\n\n    from reportlab.platypus import *\n    from reportlab.lib.styles import getSampleStyleSheet\n    from reportlab.rl_config import defaultPageSize\n    from reportlab.lib.units import inch, mm\n    from reportlab.lib.enums import TA_LEFT, TA_RIGHT, TA_CENTER, TA_JUSTIFY\n    from reportlab.lib import colors\n    from uuid import uuid4\n    from cgi import escape\n    import os\n\n    title = session.name.replace("\\r", "").replace("\\t", "")\n    heading = session.banda\n    text = session.letra\n\n\n    styles = getSampleStyleSheet()\n    tmpfilename=os.path.join(request.folder,\'private\',str(uuid4()))\n    doc = SimpleDocTemplate(tmpfilename)\n    story = []\n    story.append(Paragraph(escape(title),styles["Heading1"]))\n    story.append(Paragraph(escape(heading),styles["Heading3"]))\n    story.append(Preformatted(escape(text), styles["Normal"]))\n    story.append(Spacer(1,2*inch))\n    doc.build(story)\n    data = open(tmpfilename,"rb").read()\n    os.unlink(tmpfilename)\n    response.headers[\'Content-Type\']=\'application/pdf\'\n    return data\n\nresponse._vars=response._caller(evernote)\n'
+p7
+sS'snapshot'
+p8
+(dp9
+S'exception'
+p10
+(dp11
+S'__module__'
+p12
+S"'socket'"
+p13
+sS'__getslice__'
+p14
+S"<method-wrapper '__getslice__' of gaierror object>"
+p15
+sS'__str__'
+p16
+S"<method-wrapper '__str__' of gaierror object>"
+p17
+sS'__reduce__'
+p18
+S'<built-in method __reduce__ of gaierror object>'
+p19
+sS'__dict__'
+p20
+S'{}'
+p21
+sS'__sizeof__'
+p22
+S'<built-in method __sizeof__ of gaierror object>'
+p23
+sS'__weakref__'
+p24
+S'None'
+p25
+sS'__init__'
+p26
+S"<method-wrapper '__init__' of gaierror object>"
+p27
+sS'__setattr__'
+p28
+S"<method-wrapper '__setattr__' of gaierror object>"
+p29
+sS'__reduce_ex__'
+p30
+S'<built-in method __reduce_ex__ of gaierror object>'
+p31
+sS'__new__'
+p32
+S'<built-in method __new__ of type object>'
+p33
+sS'errno'
+p34
+S'8'
+sS'__format__'
+p35
+S'<built-in method __format__ of gaierror object>'
+p36
+sS'__class__'
+p37
+S"<class 'socket.gaierror'>"
+p38
+sS'filename'
+p39
+S'None'
+p40
+sS'__doc__'
+p41
+S'None'
+p42
+sS'__getitem__'
+p43
+S"<method-wrapper '__getitem__' of gaierror object>"
+p44
+sS'__setstate__'
+p45
+S'<built-in method __setstate__ of gaierror object>'
+p46
+sS'__getattribute__'
+p47
+S"<method-wrapper '__getattribute__' of gaierror object>"
+p48
+sS'args'
+p49
+S"(8, 'nodename nor servname provided, or not known')"
+p50
+sS'__subclasshook__'
+p51
+S'<built-in method __subclasshook__ of type object>'
+p52
+sS'__unicode__'
+p53
+S'<built-in method __unicode__ of gaierror object>'
+p54
+sS'strerror'
+p55
+S"'nodename nor servname provided, or not known'"
+p56
+sS'__delattr__'
+p57
+S"<method-wrapper '__delattr__' of gaierror object>"
+p58
+sS'__repr__'
+p59
+S"<method-wrapper '__repr__' of gaierror object>"
+p60
+sS'__hash__'
+p61
+S"<method-wrapper '__hash__' of gaierror object>"
+p62
+ssS'evalue'
+p63
+S'[Errno 8] nodename nor servname provided, or not known'
+p64
+sS'request'
+p65
+cgluon.html
+XML_unpickle
+p66
+(S's_`\x00\x00<div><table><tr><td style="font-weight:bold;vertical-align:top;">ajax</td><td style="vertical-align:top;">:</td><td><div>True</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">application</td><td style="vertical-align:top;">:</td><td><div>Cifra</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">args</td><td style="vertical-align:top;">:</td><td><div><table></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">cid</td><td style="vertical-align:top;">:</td><td><div>None</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">client</td><td style="vertical-align:top;">:</td><td><div>127.0.0.1</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">controller</td><td style="vertical-align:top;">:</td><td><div>default</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">cookies</td><td style="vertical-align:top;">:</td><td><div><table><tr><td style="font-weight:bold;vertical-align:top;">session_id_admin</td><td style="vertical-align:top;">:</td><td><div>127.0.0.1-12f7538e-b7cb-438b-ba6f-9785a977ec30<table><tr><td style="font-weight:bold;vertical-align:top;">comment</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">domain</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">expires</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">httponly</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">max-age</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">path</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">secure</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">version</td><td style="vertical-align:top;">:</td><td><div></div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_id_cifra</td><td style="vertical-align:top;">:</td><td><div>127.0.0.1-0886abbe-1b27-4724-80a7-9dc2094d7598<table><tr><td style="font-weight:bold;vertical-align:top;">comment</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">domain</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">expires</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">httponly</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">max-age</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">path</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">secure</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">version</td><td style="vertical-align:top;">:</td><td><div></div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_id_welcome</td><td style="vertical-align:top;">:</td><td><div>127.0.0.1-126123e1-1ed2-4f24-9e6a-2134d52ffe9c<table><tr><td style="font-weight:bold;vertical-align:top;">comment</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">domain</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">expires</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">httponly</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">max-age</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">path</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">secure</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">version</td><td style="vertical-align:top;">:</td><td><div></div></td></tr></table></div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">env</td><td style="vertical-align:top;">:</td><td><div><table><tr><td style="font-weight:bold;vertical-align:top;">CONTENT_LENGTH</td><td style="vertical-align:top;">:</td><td><div>0</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">HTTP_ACCEPT</td><td style="vertical-align:top;">:</td><td><div>*/*</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">HTTP_ACCEPT_ENCODING</td><td style="vertical-align:top;">:</td><td><div>gzip,deflate,sdch</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">HTTP_ACCEPT_LANGUAGE</td><td style="vertical-align:top;">:</td><td><div>pt-BR,pt;q=0.8,en-US;q=0.6,en;q=0.4</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">HTTP_CONNECTION</td><td style="vertical-align:top;">:</td><td><div>keep-alive</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">HTTP_CONTENT_LENGTH</td><td style="vertical-align:top;">:</td><td><div>0</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">HTTP_COOKIE</td><td style="vertical-align:top;">:</td><td><div>session_id_welcome=127.0.0.1-126123e1-1ed2-4f24-9e6a-2134d52ffe9c; session_id_admin=127.0.0.1-12f7538e-b7cb-438b-ba6f-9785a977ec30; session_id_cifra=127.0.0.1-0886abbe-1b27-4724-80a7-9dc2094d7598</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">HTTP_HOST</td><td style="vertical-align:top;">:</td><td><div>127.0.0.1:8000</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">HTTP_ORIGIN</td><td style="vertical-align:top;">:</td><td><div>http://127.0.0.1:8000</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">HTTP_REFERER</td><td style="vertical-align:top;">:</td><td><div>http://127.0.0.1:8000/Cifra/default/cifra</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">HTTP_USER_AGENT</td><td style="vertical-align:top;">:</td><td><div>Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/29.0.1547.76 Safari/537.36</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">HTTP_X_REQUESTED_WITH</td><td style="vertical-align:top;">:</td><td><div>XMLHttpRequest</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">PATH_INFO</td><td style="vertical-align:top;">:</td><td><div>/Cifra/default/evernote</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">QUERY_STRING</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">REMOTE_ADDR</td><td style="vertical-align:top;">:</td><td><div>127.0.0.1</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">REMOTE_PORT</td><td style="vertical-align:top;">:</td><td><div>57993</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">REQUEST_METHOD</td><td style="vertical-align:top;">:</td><td><div>POST</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">SCRIPT_NAME</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">SERVER_NAME</td><td style="vertical-align:top;">:</td><td><div>MacBook-Pro-de-Joao.local</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">SERVER_PORT</td><td style="vertical-align:top;">:</td><td><div>8000</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">SERVER_PROTOCOL</td><td style="vertical-align:top;">:</td><td><div>HTTP/1.1</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">SERVER_SOFTWARE</td><td style="vertical-align:top;">:</td><td><div>Rocket 1.2.6</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">app_folders</td><td style="vertical-align:top;">:</td><td><div>set([&#x27;/Users/JoaoBtte/Documents/python/Hello/applications/admin/&#x27;, &#x27;/Users/JoaoBtte/Documents/python/Hello/applications/welcome/&#x27;, &#x27;/Users/JoaoBtte/Documents/python/Hello/applications/Cifra/&#x27;])</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">applications_parent</td><td style="vertical-align:top;">:</td><td><div>/Users/JoaoBtte/Documents/python/Hello</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">cmd_args</td><td style="vertical-align:top;">:</td><td><div><table></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">cmd_options</td><td style="vertical-align:top;">:</td><td><div>&lt;Values at 0x10259b830: {&#x27;verbose&#x27;: False, &#x27;ip&#x27;: &#x27;127.0.0.1&#x27;, &#x27;debuglevel&#x27;: 30, &#x27;with_scheduler&#x27;: False, &#x27;ips&#x27;: [&#x27;fe80::22c9:d0ff:fed9:645f%en1&#x27;, &#x27;192.168.1.4&#x27;], &#x27;shutdown_timeout&#x27;: 5, &#x27;taskbar&#x27;: False, &#x27;with_coverage&#x27;: False, &#x27;port&#x27;: 8000, &#x27;maxthreads&#x27;: None, &#x27;softcron&#x27;: False, &#x27;server_name&#x27;: &#x27;MacBook-Pro-de-Joao.local&#x27;, &#x27;bpython&#x27;: False, &#x27;nogui&#x27;: False, &#x27;pid_filename&#x27;: &#x27;httpserver.pid&#x27;, &#x27;extcron&#x27;: False, &#x27;runcron&#x27;: False, &#x27;run_system_tests&#x27;: False, &#x27;test&#x27;: None, &#x27;folder&#x27;: &#x27;/Users/JoaoBtte/Documents/python/Hello&#x27;, &#x27;config&#x27;: &#x27;&#x27;, &#x27;minthreads&#x27;: None, &#x27;winservice&#x27;: &#x27;&#x27;, &#x27;shell&#x27;: None, &#x27;run&#x27;: &#x27;&#x27;, &#x27;log_filename&#x27;: &#x27;httpserver.log&#x27;, &#x27;profiler_dir&#x27;: None, &#x27;args&#x27;: [&#x27;&#x27;], &#x27;socket_timeout&#x27;: 5, &#x27;ssl_ca_certificate&#x27;: None, &#x27;scheduler&#x27;: None, &#x27;interfaces&#x27;: None, &#x27;ssl_private_key&#x27;: &#x27;&#x27;, &#x27;scheduler_groups&#x27;: None, &#x27;password&#x27;: &#x27;&lt;ask&gt;&#x27;, &#x27;request_queue_size&#x27;: 5, &#x27;ssl_certificate&#x27;: &#x27;&#x27;, &#x27;cronjob&#x27;: False, &#x27;numthreads&#x27;: None, &#x27;quiet&#x27;: False, &#x27;import_models&#x27;: False, &#x27;timeout&#x27;: 10, &#x27;plain&#x27;: False, &#x27;nobanner&#x27;: False}&gt;</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">content_length</td><td style="vertical-align:top;">:</td><td><div>0</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">db_sessions</td><td style="vertical-align:top;">:</td><td><div>set([])</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">debugging</td><td style="vertical-align:top;">:</td><td><div>True</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">gluon_parent</td><td style="vertical-align:top;">:</td><td><div>/Users/JoaoBtte/Documents/python/Hello</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">http_accept</td><td style="vertical-align:top;">:</td><td><div>*/*</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">http_accept_encoding</td><td style="vertical-align:top;">:</td><td><div>gzip,deflate,sdch</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">http_accept_language</td><td style="vertical-align:top;">:</td><td><div>pt-BR,pt;q=0.8,en-US;q=0.6,en;q=0.4</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">http_connection</td><td style="vertical-align:top;">:</td><td><div>keep-alive</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">http_content_length</td><td style="vertical-align:top;">:</td><td><div>0</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">http_cookie</td><td style="vertical-align:top;">:</td><td><div>session_id_welcome=127.0.0.1-126123e1-1ed2-4f24-9e6a-2134d52ffe9c; session_id_admin=127.0.0.1-12f7538e-b7cb-438b-ba6f-9785a977ec30; session_id_cifra=127.0.0.1-0886abbe-1b27-4724-80a7-9dc2094d7598</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">http_host</td><td style="vertical-align:top;">:</td><td><div>127.0.0.1:8000</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">http_origin</td><td style="vertical-align:top;">:</td><td><div>http://127.0.0.1:8000</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">http_referer</td><td style="vertical-align:top;">:</td><td><div>http://127.0.0.1:8000/Cifra/default/cifra</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">http_user_agent</td><td style="vertical-align:top;">:</td><td><div>Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/29.0.1547.76 Safari/537.36</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">http_x_requested_with</td><td style="vertical-align:top;">:</td><td><div>XMLHttpRequest</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">is_jython</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">is_pypy</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">is_source</td><td style="vertical-align:top;">:</td><td><div>True</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">local_hosts</td><td style="vertical-align:top;">:</td><td><div><table><tr><td><div>fe80::22c9:d0ff:fed9:645f%en1</div></td></tr><tr><td><div>::ffff:127.0.0.1</div></td></tr><tr><td><div>::1</div></td></tr><tr><td><div>192.168.1.4</div></td></tr><tr><td><div>MacBook-Pro-de-Joao.local</div></td></tr><tr><td><div>127.0.0.1</div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">path_info</td><td style="vertical-align:top;">:</td><td><div>/Cifra/default/evernote</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">query_string</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">remote_addr</td><td style="vertical-align:top;">:</td><td><div>127.0.0.1</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">remote_port</td><td style="vertical-align:top;">:</td><td><div>57993</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">request_method</td><td style="vertical-align:top;">:</td><td><div>POST</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">request_uri</td><td style="vertical-align:top;">:</td><td><div>/Cifra/default/evernote</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">script_name</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">server_name</td><td style="vertical-align:top;">:</td><td><div>MacBook-Pro-de-Joao.local</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">server_port</td><td style="vertical-align:top;">:</td><td><div>8000</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">server_protocol</td><td style="vertical-align:top;">:</td><td><div>HTTP/1.1</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">server_software</td><td style="vertical-align:top;">:</td><td><div>Rocket 1.2.6</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">web2py_path</td><td style="vertical-align:top;">:</td><td><div>/Users/JoaoBtte/Documents/python/Hello</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">web2py_version</td><td style="vertical-align:top;">:</td><td><div>2.6.2-stable+timestamp.2013.09.13.22.53.04</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi.errors</td><td style="vertical-align:top;">:</td><td><div>&lt;open file &#x27;&lt;stderr&gt;&#x27;, mode &#x27;w&#x27; at 0x101629270&gt;</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi.file_wrapper</td><td style="vertical-align:top;">:</td><td><div>&lt;class wsgiref.util.FileWrapper at 0x1025bb328&gt;</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi.input</td><td style="vertical-align:top;">:</td><td><div>&lt;socket._fileobject object at 0x10287fdd0&gt;</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi.multiprocess</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi.multithread</td><td style="vertical-align:top;">:</td><td><div>True</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi.run_once</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi.url_scheme</td><td style="vertical-align:top;">:</td><td><div>http</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi.version</td><td style="vertical-align:top;">:</td><td><div><table><tr><td><div>1</div></td></tr><tr><td><div>0</div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi_errors</td><td style="vertical-align:top;">:</td><td><div>&lt;open file &#x27;&lt;stderr&gt;&#x27;, mode &#x27;w&#x27; at 0x101629270&gt;</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi_file_wrapper</td><td style="vertical-align:top;">:</td><td><div>&lt;class wsgiref.util.FileWrapper at 0x1025bb328&gt;</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi_input</td><td style="vertical-align:top;">:</td><td><div>&lt;socket._fileobject object at 0x10287fdd0&gt;</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi_multiprocess</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi_multithread</td><td style="vertical-align:top;">:</td><td><div>True</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi_run_once</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi_url_scheme</td><td style="vertical-align:top;">:</td><td><div>http</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi_version</td><td style="vertical-align:top;">:</td><td><div><table><tr><td><div>1</div></td></tr><tr><td><div>0</div></td></tr></table></div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">extension</td><td style="vertical-align:top;">:</td><td><div>html</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">folder</td><td style="vertical-align:top;">:</td><td><div>/Users/JoaoBtte/Documents/python/Hello/applications/Cifra/</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">function</td><td style="vertical-align:top;">:</td><td><div>evernote</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">global_settings</td><td style="vertical-align:top;">:</td><td><div><table><tr><td style="font-weight:bold;vertical-align:top;">app_folders</td><td style="vertical-align:top;">:</td><td><div>set([&#x27;/Users/JoaoBtte/Documents/python/Hello/applications/admin/&#x27;, &#x27;/Users/JoaoBtte/Documents/python/Hello/applications/welcome/&#x27;, &#x27;/Users/JoaoBtte/Documents/python/Hello/applications/Cifra/&#x27;])</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">applications_parent</td><td style="vertical-align:top;">:</td><td><div>/Users/JoaoBtte/Documents/python/Hello</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">cmd_args</td><td style="vertical-align:top;">:</td><td><div><table></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">cmd_options</td><td style="vertical-align:top;">:</td><td><div>&lt;Values at 0x10259b830: {&#x27;verbose&#x27;: False, &#x27;ip&#x27;: &#x27;127.0.0.1&#x27;, &#x27;debuglevel&#x27;: 30, &#x27;with_scheduler&#x27;: False, &#x27;ips&#x27;: [&#x27;fe80::22c9:d0ff:fed9:645f%en1&#x27;, &#x27;192.168.1.4&#x27;], &#x27;shutdown_timeout&#x27;: 5, &#x27;taskbar&#x27;: False, &#x27;with_coverage&#x27;: False, &#x27;port&#x27;: 8000, &#x27;maxthreads&#x27;: None, &#x27;softcron&#x27;: False, &#x27;server_name&#x27;: &#x27;MacBook-Pro-de-Joao.local&#x27;, &#x27;bpython&#x27;: False, &#x27;nogui&#x27;: False, &#x27;pid_filename&#x27;: &#x27;httpserver.pid&#x27;, &#x27;extcron&#x27;: False, &#x27;runcron&#x27;: False, &#x27;run_system_tests&#x27;: False, &#x27;test&#x27;: None, &#x27;folder&#x27;: &#x27;/Users/JoaoBtte/Documents/python/Hello&#x27;, &#x27;config&#x27;: &#x27;&#x27;, &#x27;minthreads&#x27;: None, &#x27;winservice&#x27;: &#x27;&#x27;, &#x27;shell&#x27;: None, &#x27;run&#x27;: &#x27;&#x27;, &#x27;log_filename&#x27;: &#x27;httpserver.log&#x27;, &#x27;profiler_dir&#x27;: None, &#x27;args&#x27;: [&#x27;&#x27;], &#x27;socket_timeout&#x27;: 5, &#x27;ssl_ca_certificate&#x27;: None, &#x27;scheduler&#x27;: None, &#x27;interfaces&#x27;: None, &#x27;ssl_private_key&#x27;: &#x27;&#x27;, &#x27;scheduler_groups&#x27;: None, &#x27;password&#x27;: &#x27;&lt;ask&gt;&#x27;, &#x27;request_queue_size&#x27;: 5, &#x27;ssl_certificate&#x27;: &#x27;&#x27;, &#x27;cronjob&#x27;: False, &#x27;numthreads&#x27;: None, &#x27;quiet&#x27;: False, &#x27;import_models&#x27;: False, &#x27;timeout&#x27;: 10, &#x27;plain&#x27;: False, &#x27;nobanner&#x27;: False}&gt;</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">db_sessions</td><td style="vertical-align:top;">:</td><td><div>set([])</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">debugging</td><td style="vertical-align:top;">:</td><td><div>True</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">gluon_parent</td><td style="vertical-align:top;">:</td><td><div>/Users/JoaoBtte/Documents/python/Hello</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">is_jython</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">is_pypy</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">is_source</td><td style="vertical-align:top;">:</td><td><div>True</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">local_hosts</td><td style="vertical-align:top;">:</td><td><div><table><tr><td><div>fe80::22c9:d0ff:fed9:645f%en1</div></td></tr><tr><td><div>::ffff:127.0.0.1</div></td></tr><tr><td><div>::1</div></td></tr><tr><td><div>192.168.1.4</div></td></tr><tr><td><div>MacBook-Pro-de-Joao.local</div></td></tr><tr><td><div>127.0.0.1</div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">web2py_version</td><td style="vertical-align:top;">:</td><td><div>2.6.2-stable+timestamp.2013.09.13.22.53.04</div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">is_https</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">is_local</td><td style="vertical-align:top;">:</td><td><div>True</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">is_restful</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">now</td><td style="vertical-align:top;">:</td><td><div>datetime.datetime(2013, 9, 25, 19, 38, 44, 356346)</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">raw_args</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">raw_extension</td><td style="vertical-align:top;">:</td><td><div>None</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">url</td><td style="vertical-align:top;">:</td><td><div>/Cifra/default/evernote</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">utcnow</td><td style="vertical-align:top;">:</td><td><div>datetime.datetime(2013, 9, 25, 22, 38, 44, 356361)</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">uuid</td><td style="vertical-align:top;">:</td><td><div>Cifra/127.0.0.1.2013-09-25.19-38-44.dce78b14-823c-438e-b694-6abb1ddebe84</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi</td><td style="vertical-align:top;">:</td><td><div>&lt;gluon.main.LazyWSGI object at 0x10a3f7cd0&gt;</div></td></tr></table></div>'
+tRp67
+sS'frames'
+p68
+(lp69
+(dp70
+S'file'
+p71
+S'/Users/JoaoBtte/Documents/python/Hello/gluon/restricted.py'
+p72
+sS'dump'
+p73
+(dp74
+S'environment'
+p75
+S"{'A': <class 'gluon.html.A'>, 'ANY_OF': <class 'gluon.validators.ANY_OF'>, 'Auth': <class 'gluon.tools.Auth'>, 'B': <class 'gluon.html.B'>, 'BEAUTIFY': <class 'gluon.html.BEAUTIFY'>, 'BODY': <class 'gluon.html.BODY'>, 'BR': <class 'gluon.html.BR'>, 'BUTTON': <class 'gluon.html.BUTTON'>, 'CAT': <class 'gluon.html.CAT'>, 'CENTER': <class 'gluon.html.CENTER'>, ...}"
+p76
+sS'ccode'
+p77
+S'<code object <module> at 0x10a3770b0, file "/Use...plications/Cifra/controllers/default.py", line 1>'
+p78
+ssS'lnum'
+p79
+I217
+sS'lines'
+p80
+(dp81
+I212
+S'    try:'
+p82
+sI213
+S'        if isinstance(code, types.CodeType):'
+p83
+sI214
+S'            ccode = code'
+p84
+sI215
+S'        else:'
+p85
+sI216
+S'            ccode = compile2(code, layer)'
+p86
+sI217
+S'        exec ccode in environment'
+p87
+sI218
+S'    except HTTP:'
+p88
+sI219
+S'        raise'
+p89
+sI220
+S'    except RestrictedError:'
+p90
+sI221
+S'        # do not encapsulate (obfuscate) the original RestrictedError'
+p91
+ssS'call'
+p92
+S"(code='def user():\\n    return dict(form=auth())\\n\\ndef in... data\\n\\nresponse._vars=response._caller(evernote)\\n', environment={'A': <class 'gluon.html.A'>, 'ANY_OF': <class 'gluon.validators.ANY_OF'>, 'Auth': <class 'gluon.tools.Auth'>, 'B': <class 'gluon.html.B'>, 'BEAUTIFY': <class 'gluon.html.BEAUTIFY'>, 'BODY': <class 'gluon.html.BODY'>, 'BR': <class 'gluon.html.BR'>, 'BUTTON': <class 'gluon.html.BUTTON'>, 'CAT': <class 'gluon.html.CAT'>, 'CENTER': <class 'gluon.html.CENTER'>, ...}, layer='/Users/JoaoBtte/Documents/python/Hello/applications/Cifra/controllers/default.py')"
+p93
+sS'func'
+p94
+S'restricted'
+p95
+sa(dp96
+g71
+S'/Users/JoaoBtte/Documents/python/Hello/applications/Cifra/controllers/default.py'
+p97
+sg73
+(dp98
+sg79
+I67
+sg80
+(dp99
+I64
+S"    response.headers['Content-Type']='application/pdf'"
+p100
+sI65
+S'    return data'
+p101
+sI56
+S'    story = []'
+p102
+sI57
+S'    story.append(Paragraph(escape(title),styles["Heading1"]))'
+p103
+sI58
+S'    story.append(Paragraph(escape(heading),styles["Heading3"]))'
+p104
+sI59
+S'    story.append(Preformatted(escape(text), styles["Normal"]))'
+p105
+sI60
+S'    story.append(Spacer(1,2*inch))'
+p106
+sI61
+S'    doc.build(story)'
+p107
+sI62
+S'    data = open(tmpfilename,"rb").read()'
+p108
+sI63
+S'    os.unlink(tmpfilename)'
+p109
+ssg92
+S'()'
+p110
+sg94
+S'<module>'
+p111
+sa(dp112
+g71
+S'/Users/JoaoBtte/Documents/python/Hello/gluon/globals.py'
+p113
+sg73
+(dp114
+S'self'
+p115
+S'undefined'
+p116
+sS'f'
+S'<function evernote>'
+p117
+ssg79
+I378
+sg80
+(dp118
+I373
+S'        self.menu = []             # used by the default view layout'
+p119
+sI374
+S'        self.files = []            # used by web2py_ajax.html'
+p120
+sI375
+S'        self.generic_patterns = []  # patterns to allow generic views'
+p121
+sI376
+S"        self.delimiters = ('{{', '}}')"
+p122
+sI377
+S'        self._vars = None'
+p123
+sI378
+S'        self._caller = lambda f: f()'
+p124
+sI379
+S'        self._view_environment = None'
+p125
+sI380
+S'        self._custom_commit = None'
+p126
+sI381
+S'        self._custom_rollback = None'
+p127
+sI382
+S''
+ssg92
+S'(f=<function evernote>)'
+p128
+sg94
+S'<lambda>'
+p129
+sa(dp130
+g71
+S'/Users/JoaoBtte/Documents/python/Hello/applications/Cifra/controllers/default.py'
+p131
+sg73
+(dp132
+S'session.banda'
+p133
+S"' Maria Gad\\xc3\\xba '"
+p134
+sS'global session'
+p135
+S"<Storage {'letra': 'Tom: C\\r\\n\\t\\t\\n(intro 4x)\\n...me': 'Chrome'}}, 'banda': ' Maria Gad\\xc3\\xba '}>"
+p136
+sS'evernote_song.evernote_song'
+p137
+S'<function evernote_song>'
+p138
+sS'session.name'
+p139
+S"' Shimbalai\\xc3\\x8a '"
+p140
+sS'session.letra'
+p141
+S"'Tom: C\\r\\n\\t\\t\\n(intro 4x)\\n\\n\\nE|----8--7-------0------... (4x)\\n Shimbalai\\xc3\\xaa, toda vez que ele vai repousar'"
+p142
+sS'evernote_song'
+p143
+S"<module 'applications.Cifra.modules.evernote_son...m 'applications/Cifra/modules/evernote_song.pyc'>"
+p144
+ssg79
+I30
+sg80
+(dp145
+I32
+S'    return ("")'
+p146
+sI33
+S''
+sI34
+S''
+sI25
+S'    response.subtitles = session.name+"-"+session.banda'
+p147
+sI26
+S'    return dict()'
+p148
+sI27
+S''
+sI28
+S'def evernote():'
+p149
+sI29
+S'    import evernote_song'
+p150
+sI30
+S'    evernote_song.evernote_song(session.name, session.banda, session.letra)'
+p151
+sI31
+S"    response.flash='Gravado no Evernote!'"
+p152
+ssg92
+S'()'
+p153
+sg94
+S'evernote'
+p154
+sa(dp155
+g71
+S'/Users/JoaoBtte/Documents/python/Hello/applications/Cifra/modules/evernote_song.py'
+p156
+sg73
+(dp157
+S'UserStoreConstants.EDAM_VERSION_MINOR'
+p158
+S'25'
+p159
+sS'UserStoreConstants'
+p160
+S"<module 'evernote.edam.userstore.constants' from...-packages/evernote/edam/userstore/constants.pyc'>"
+p161
+ssg79
+I40
+sg80
+(dp162
+I35
+S'    user_store = client.get_user_store()'
+p163
+sI36
+S''
+sI37
+S'    version_ok = user_store.checkVersion('
+p164
+sI38
+S'        "Evernote EDAMTest (Python)",'
+p165
+sI39
+S'        UserStoreConstants.EDAM_VERSION_MAJOR,'
+p166
+sI40
+S'        UserStoreConstants.EDAM_VERSION_MINOR'
+p167
+sI41
+S'    )'
+p168
+sI42
+S''
+sI43
+S'    note_store = client.get_note_store()'
+p169
+sI44
+S''
+ssg92
+S"(title=' Shimbalai\\xc3\\x8a ', band=' Maria Gad\\xc3\\xba ', song='Tom: C\\r\\n\\t\\t\\n(intro 4x)\\n\\n\\nE|----8--7-------0------... (4x)\\n Shimbalai\\xc3\\xaa, toda vez que ele vai repousar')"
+p170
+sg94
+S'evernote_song'
+p171
+sa(dp172
+g71
+S'/Users/JoaoBtte/Documents/python/Hello/site-packages/evernote/api/client.py'
+p173
+sg73
+(dp174
+S'targetMethod'
+p175
+S'<bound method Client.checkVersion of <evernote.edam.userstore.UserStore.Client object>>'
+p176
+sS'args'
+p177
+S"('Evernote EDAMTest (Python)', 1, 25)"
+p178
+sS'kwargs'
+p179
+g21
+ssg79
+I132
+sg80
+(dp180
+I128
+S'                return object.__getattribute__(self, name)(*args, **kwargs)'
+p181
+sI129
+S''
+sI130
+S'            org_args = inspect.getargspec(targetMethod).args'
+p182
+sI131
+S'            if len(org_args) == len(args) + 1:'
+p183
+sI132
+S'                return targetMethod(*args, **kwargs)'
+p184
+sI133
+S"            elif 'authenticationToken' in org_args:"
+p185
+sI134
+S"                skip_args = ['self', 'authenticationToken']"
+p186
+sI135
+S'                arg_names = [i for i in org_args if i not in skip_args]'
+p187
+sI136
+S'                return functools.partial('
+p188
+sI127
+S'            if targetMethod is None:'
+p189
+ssg92
+S"(*args=('Evernote EDAMTest (Python)', 1, 25), **kwargs={})"
+p190
+sg94
+S'delegate_method'
+p191
+sa(dp192
+g71
+S'/Users/JoaoBtte/Documents/python/Hello/site-packages/evernote/edam/userstore/UserStore.py'
+p193
+sg73
+(dp194
+S'edamVersionMinor'
+p195
+S'25'
+p196
+sS'self'
+p197
+S'<evernote.edam.userstore.UserStore.Client object>'
+p198
+sS'edamVersionMajor'
+p199
+S'1'
+sS'clientName'
+p200
+S"'Evernote EDAMTest (Python)'"
+p201
+sS'self.send_checkVersion'
+p202
+S'<bound method Client.send_checkVersion of <evernote.edam.userstore.UserStore.Client object>>'
+p203
+ssg79
+I490
+sg80
+(dp204
+I485
+S'    Parameters:'
+p205
+sI486
+S'     - clientName'
+p206
+sI487
+S'     - edamVersionMajor'
+p207
+sI488
+S'     - edamVersionMinor'
+p208
+sI489
+S'    """'
+p209
+sI490
+S'    self.send_checkVersion(clientName, edamVersionMajor, edamVersionMinor)'
+p210
+sI491
+S'    return self.recv_checkVersion()'
+p211
+sI492
+S''
+sI493
+S'  def send_checkVersion(self, clientName, edamVersionMajor, edamVersionMinor):'
+p212
+sI494
+S"    self._oprot.writeMessageBegin('checkVersion', TMessageType.CALL, self._seqid)"
+p213
+ssg92
+S"(self=<evernote.edam.userstore.UserStore.Client object>, clientName='Evernote EDAMTest (Python)', edamVersionMajor=1, edamVersionMinor=25)"
+p214
+sg94
+S'checkVersion'
+p215
+sa(dp216
+g71
+S'/Users/JoaoBtte/Documents/python/Hello/site-packages/evernote/edam/userstore/UserStore.py'
+p217
+sg73
+(dp218
+S'self'
+p219
+S'<evernote.edam.userstore.UserStore.Client object>'
+p220
+sS'self._oprot.trans'
+p221
+S'<thrift.transport.THttpClient.THttpClient instance>'
+p222
+sS'self._oprot.trans.flush'
+p223
+S'<bound method THttpClient._f of <thrift.transport.THttpClient.THttpClient instance>>'
+p224
+sS'self._oprot'
+p225
+S'<thrift.protocol.TBinaryProtocol.TBinaryProtocol instance>'
+p226
+ssg79
+I501
+sg80
+(dp227
+I496
+S'    args.clientName = clientName'
+p228
+sI497
+S'    args.edamVersionMajor = edamVersionMajor'
+p229
+sI498
+S'    args.edamVersionMinor = edamVersionMinor'
+p230
+sI499
+S'    args.write(self._oprot)'
+p231
+sI500
+S'    self._oprot.writeMessageEnd()'
+p232
+sI501
+S'    self._oprot.trans.flush()'
+p233
+sI502
+S''
+sI503
+S'  def recv_checkVersion(self, ):'
+p234
+sI504
+S'    (fname, mtype, rseqid) = self._iprot.readMessageBegin()'
+p235
+sI505
+S'    if mtype == TMessageType.EXCEPTION:'
+p236
+ssg92
+S"(self=<evernote.edam.userstore.UserStore.Client object>, clientName='Evernote EDAMTest (Python)', edamVersionMajor=1, edamVersionMinor=25)"
+p237
+sg94
+S'send_checkVersion'
+p238
+sa(dp239
+g71
+S'/Users/JoaoBtte/Documents/python/Hello/site-packages/thrift/transport/THttpClient.py'
+p240
+sg73
+(dp241
+S'kwargs'
+p242
+g21
+sS'args'
+p243
+S'(<thrift.transport.THttpClient.THttpClient instance>,)'
+p244
+sS'result'
+p245
+g116
+sS'f'
+S'<function flush>'
+p246
+ssg79
+I125
+sg80
+(dp247
+I128
+S'        return _f'
+p248
+sI129
+S''
+sI120
+S''
+sI121
+S'    def __withTimeout(f):'
+p249
+sI122
+S'        def _f(*args, **kwargs):'
+p250
+sI123
+S'            orig_timeout = socket.getdefaulttimeout()'
+p251
+sI124
+S'            socket.setdefaulttimeout(args[0].__timeout)'
+p252
+sI125
+S'            result = f(*args, **kwargs)'
+p253
+sI126
+S'            socket.setdefaulttimeout(orig_timeout)'
+p254
+sI127
+S'            return result'
+p255
+ssg92
+S'(*args=(<thrift.transport.THttpClient.THttpClient instance>,), **kwargs={})'
+p256
+sg94
+S'_f'
+p257
+sa(dp258
+g71
+S'/Users/JoaoBtte/Documents/python/Hello/site-packages/thrift/transport/THttpClient.py'
+p259
+sg73
+(dp260
+S'self'
+p261
+S'<thrift.transport.THttpClient.THttpClient instance>'
+p262
+sS'self.__http'
+p263
+g116
+ssg79
+I151
+sg80
+(dp264
+I146
+S"        self.__http.putheader('Host', self.host)"
+p265
+sI147
+S"        self.__http.putheader('Content-Type', 'application/x-thrift')"
+p266
+sI148
+S"        self.__http.putheader('Content-Length', str(len(data)))"
+p267
+sI149
+S'        for key, value in self.__headers.iteritems():'
+p268
+sI150
+S'            self.__http.putheader(key, value)'
+p269
+sI151
+S'        self.__http.endheaders()'
+p270
+sI152
+S''
+sI153
+S'        # Write payload'
+p271
+sI154
+S'        self.__http.send(data)'
+p272
+sI155
+S''
+ssg92
+S'(self=<thrift.transport.THttpClient.THttpClient instance>)'
+p273
+sg94
+S'flush'
+p274
+sa(dp275
+g71
+S'/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/httplib.py'
+p276
+sg73
+(dp277
+S'message_body'
+p278
+S'None'
+p279
+sS'self'
+p280
+S'<httplib.HTTPSConnection instance>'
+p281
+sS'self._send_output'
+p282
+S'<bound method HTTPSConnection._send_output of <httplib.HTTPSConnection instance>>'
+p283
+ssg79
+I951
+sg80
+(dp284
+I946
+S'        """'
+p285
+sI947
+S'        if self.__state == _CS_REQ_STARTED:'
+p286
+sI948
+S'            self.__state = _CS_REQ_SENT'
+p287
+sI949
+S'        else:'
+p288
+sI950
+S'            raise CannotSendHeader()'
+p289
+sI951
+S'        self._send_output(message_body)'
+p290
+sI952
+S''
+sI953
+S'    def request(self, method, url, body=None, headers={}):'
+p291
+sI954
+S'        """Send a complete request to the server."""'
+p292
+sI955
+S'        self._send_request(method, url, body, headers)'
+p293
+ssg92
+S'(self=<httplib.HTTPSConnection instance>, message_body=None)'
+p294
+sg94
+S'endheaders'
+p295
+sa(dp296
+g71
+S'/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/httplib.py'
+p297
+sg73
+(dp298
+S'msg'
+p299
+S"'POST //edam/user HTTP/1.0\\r\\nHost: sandbox.evernot...Apple Clang 4.0 (tags/Apple/clang-418.0.60)];\\r\\n\\r\\n'"
+p300
+sS'self'
+p301
+S'<httplib.HTTPSConnection instance>'
+p302
+sS'self.send'
+p303
+S'<bound method HTTPSConnection.send of <httplib.HTTPSConnection instance>>'
+p304
+ssg79
+I811
+sg80
+(dp305
+I806
+S'        # it will avoid performance problems caused by the interaction'
+p306
+sI807
+S'        # between delayed ack and the Nagle algorithm.'
+p307
+sI808
+S'        if isinstance(message_body, str):'
+p308
+sI809
+S'            msg += message_body'
+p309
+sI810
+S'            message_body = None'
+p310
+sI811
+S'        self.send(msg)'
+p311
+sI812
+S'        if message_body is not None:'
+p312
+sI813
+S'            #message_body was not a string (i.e. it is a file) and'
+p313
+sI814
+S'            #we must run the risk of Nagle'
+p314
+sI815
+S'            self.send(message_body)'
+p315
+ssg92
+S'(self=<httplib.HTTPSConnection instance>, message_body=None)'
+p316
+sg94
+S'_send_output'
+p317
+sa(dp318
+g71
+S'/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/httplib.py'
+p319
+sg73
+(dp320
+S'self'
+p321
+S'<httplib.HTTPSConnection instance>'
+p322
+sS'self.connect'
+p323
+S'<bound method HTTPSConnection.connect of <httplib.HTTPSConnection instance>>'
+p324
+ssg79
+I773
+sg80
+(dp325
+I768
+S''
+sI769
+S'    def send(self, data):'
+p326
+sI770
+S'        """Send `data\' to the server."""'
+p327
+sI771
+S'        if self.sock is None:'
+p328
+sI772
+S'            if self.auto_open:'
+p329
+sI773
+S'                self.connect()'
+p330
+sI774
+S'            else:'
+p331
+sI775
+S'                raise NotConnected()'
+p332
+sI776
+S''
+sI777
+S'        if self.debuglevel > 0:'
+p333
+ssg92
+S"(self=<httplib.HTTPSConnection instance>, data='POST //edam/user HTTP/1.0\\r\\nHost: sandbox.evernot...Apple Clang 4.0 (tags/Apple/clang-418.0.60)];\\r\\n\\r\\n')"
+p334
+sg94
+S'send'
+p335
+sa(dp336
+g71
+S'/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/httplib.py'
+p337
+sg73
+(dp338
+S'self.timeout'
+p339
+S'<object object>'
+p340
+sS'self'
+p341
+S'<httplib.HTTPSConnection instance>'
+p342
+sS'self.source_address'
+p343
+S'None'
+p344
+ssg79
+I1154
+sg80
+(dp345
+I1152
+S''
+sI1153
+S'            sock = socket.create_connection((self.host, self.port),'
+p346
+sI1154
+S'                                            self.timeout, self.source_address)'
+p347
+sI1155
+S'            if self._tunnel_host:'
+p348
+sI1156
+S'                self.sock = sock'
+p349
+sI1157
+S'                self._tunnel()'
+p350
+sI1158
+S'            self.sock = ssl.wrap_socket(sock, self.key_file, self.cert_file)'
+p351
+sI1149
+S''
+sI1150
+S'        def connect(self):'
+p352
+sI1151
+S'            "Connect to a host on a given (SSL) port."'
+p353
+ssg92
+S'(self=<httplib.HTTPSConnection instance>)'
+p354
+sg94
+S'connect'
+p355
+sa(dp356
+g71
+S'/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/socket.py'
+p357
+sg73
+(dp358
+S'global SOCK_STREAM'
+p359
+S'1'
+sS'res'
+p360
+g116
+sS'host'
+p361
+S"'sandbox.evernote.com'"
+p362
+sS'port'
+p363
+S'443'
+p364
+sS'global getaddrinfo'
+p365
+S'<built-in function getaddrinfo>'
+p366
+ssg79
+I553
+sg80
+(dp367
+I548
+S"    An host of '' or port 0 tells the OS to use the default."
+p368
+sI549
+S'    """'
+p369
+sI550
+S''
+sI551
+S'    host, port = address'
+p370
+sI552
+S'    err = None'
+p371
+sI553
+S'    for res in getaddrinfo(host, port, 0, SOCK_STREAM):'
+p372
+sI554
+S'        af, socktype, proto, canonname, sa = res'
+p373
+sI555
+S'        sock = None'
+p374
+sI556
+S'        try:'
+p375
+sI557
+S'            sock = socket(af, socktype, proto)'
+p376
+ssg92
+S"(address=('sandbox.evernote.com', 443), timeout=<object object>, source_address=None)"
+p377
+sg94
+S'create_connection'
+p378
+sasS'pyver'
+p379
+S'Python 2.7.2: /usr/bin/python (prefix: /System/Library/Frameworks/Python.framework/Versions/2.7)'
+p380
+sS'session'
+p381
+g66
+(S's4\x11\x00\x00<div><table><tr><td style="font-weight:bold;vertical-align:top;">banda</td><td style="vertical-align:top;">:</td><td><div> Maria Gad\xc3\xba </div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">letra</td><td style="vertical-align:top;">:</td><td><div>Tom: C\r\n\t\t\n(intro 4x)\n\n\nE|----8--7-------0-------0-------0--|\nB|----8------8---------8---8---8----|\nG|----0--------------0-------0------|\nD|----------------------------------|\nA|-----------------8----------------|\nE|--8------8---8--------------------|\n\n\n(dedilhado 1\xc2\xba refr\xc3\xa3o)\n\n\n     C     C7M       F7M(9)    G9            C     C7M       F7M(9)    G9\nE|----8---7-------0---------------------------8---7-------0-------------------0---|\nB|----8-------8-----------8/10--------10------8-------8-----------8/10------------|\nG|----0---------------0----------0------------0---------------0----------0--------|\nD|--------------------------------------------------------------------------------|\nA|------------------8---8-----10---10-----------------------8---8-----10---10-----|\nE|--8---8---8---8---------------------------8---8---8---8-------------------------|\n\n\n\n     Am7                F7M(9)     G             C     C7M       F7M(9)    G9    Am7(9)\nE|-------7p5-------0---------------------------8---7-------0-------------------0--0-|\nB|---5---------5------------8/10---------10----8-------8-----------8/10-----------0-|\nG|---5---------5--------0-----------0----------0---------------0----------0-------5-|\nD|--------------------------------------------------------------------------------5-|\nA|-0---0-----0---0----8---8------10---10---------------------8---8-----10---10----0-|\nE|-------------------------------------------8---8---8---8--------------------------|\n\n\nC        F7M(9)             G9               C\n Shimbalai\xc3\xaa, quando vejo o sol beijando o mar\n         F7M(9)             G9          Am7(9)\n Shimbalai\xc3\xaa, toda vez que ele vai repousar\n                F7M(9)             G9               C\n Shimbalai\xc3\xaa, quando vejo o sol beijando o mar\n         F7M(9)             G9          Am7(9)\n Shimbalai\xc3\xaa, toda vez que ele vai repousar\n\nC9         G/B         Am7\n Natureza deusa do viver\n           F\n A beleza pura do nascer\nC9           G/B                Am7\n Uma flor brilhando \xc3\xa0 luz do sol\n                   F         Am7\n Pescador entre o mar e o anzol\n\nC9            G/B                Am7\n Pensamento t\xc3\xa3o livre quanto o c\xc3\xa9u\n             F\n Imagino um barco de papel\nC9            G/B              Am7\n Indo embora pra n\xc3\xa3o mais voltar\n             F         Am7\n Tendo como guia Iemanj\xc3\xa1\n\n          F                 G              C9\n Shimbalai\xc3\xaa, quando vejo o sol beijando o mar\n          F                 G            Am7\n Shimbalai\xc3\xaa, toda vez que ele vai repousar\n          F                 G              C9\n Shimbalai\xc3\xaa, quando vejo o sol beijando o mar\n          F                 G            Am7\n Shimbalai\xc3\xaa, toda vez que ele vai repousar\n\nC9             G/B           Am7\n Quanto tempo leva pra aprender\n                   F\n Que uma flor tem vida ao nascer\nC9             G/B              Am7\n Essa flor brilhando \xc3\xa0 luz do sol\n                   F         Am7\n Pescador entre o mar e o anzol\n\n          F                 G              C9\n Shimbalai\xc3\xaa, quando vejo o sol beijando o mar\n          F                 G            Am7\n Shimbalai\xc3\xaa, toda vez que ele vai repousar\n          F                 G              C9\n Shimbalai\xc3\xaa, quando vejo o sol beijando o mar\n          F                 G\n Shimbalai\xc3\xaa, toda vez que ele vai repousar\n\n(C   C7M)\n\n( C   C7M   F7M(9)   G9 )\nSer capit\xc3\xa3 desse mundo\nPoder rodar sem fronteiras\nViver um ano em segundos\nN\xc3\xa3o achar sonhos besteira\n\n          F7M(9)         G9          C          C7M\n Me encantar com um livro, que fale sobre vaidade\n            F7M(9)        G9         F7M(9)      C\n Quando mentir for preciso, poder falar a verdade\n\n(solo)  C  C7M\n\n          F                 G              C9\n Shimbalai\xc3\xaa, quando vejo o sol beijando o mar\n          F                 G           C9       (4x)\n Shimbalai\xc3\xaa, toda vez que ele vai repousar</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">name</td><td style="vertical-align:top;">:</td><td><div> Shimbalai\xc3\x8a </div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">nome_musica</td><td style="vertical-align:top;">:</td><td><div>Shimbalai\xc3\xaa</div></td></tr></table></div>'
+tRp382
+sS'etype'
+p383
+S"<class 'socket.gaierror'>"
+p384
+sS'date'
+p385
+S'Wed Sep 25 19:39:14 2013'
+p386
+sS'response'
+p387
+g66
+(S's\xb5.\x00\x00<div><table><tr><td style="font-weight:bold;vertical-align:top;">body</td><td style="vertical-align:top;">:</td><td><div>&lt;cStringIO.StringO object at 0x106e4f308&gt;</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">cookies</td><td style="vertical-align:top;">:</td><td><div><table></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">delimiters</td><td style="vertical-align:top;">:</td><td><div><table><tr><td><div>{{</div></td></tr><tr><td><div>}}</div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">files</td><td style="vertical-align:top;">:</td><td><div><table></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">flash</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">generic_patterns</td><td style="vertical-align:top;">:</td><td><div><table></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">google_analytics_id</td><td style="vertical-align:top;">:</td><td><div>None</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">headers</td><td style="vertical-align:top;">:</td><td><div><table><tr><td style="font-weight:bold;vertical-align:top;">X-Powered-By</td><td style="vertical-align:top;">:</td><td><div>web2py</div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">menu</td><td style="vertical-align:top;">:</td><td><div><table><tr><td><div><table><tr><td><div>Home</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>/Cifra/default/index</div></td></tr><tr><td><div><table></table></div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>Evernote</div></td></tr><tr><td><div>True</div></td></tr><tr><td><div>/Cifra/default/index</div></td></tr><tr><td><div><table></table></div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>PDF</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>/Cifra/default/index</div></td></tr><tr><td><div><table></table></div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>Imprimir</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>/Cifra/default/index</div></td></tr><tr><td><div><table></table></div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div><span class="highlighted">web2py</span></div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>http://web2py.com</div></td></tr><tr><td><div><table><tr><td><div><table><tr><td><div>My Sites</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>/admin/default/site</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>This App</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>/admin/default/design/Cifra</div></td></tr><tr><td><div>[(&lt;lazyT &#x27;Controller&#x27;&gt;, False, &#x27;/admin/default/edit/Cifra/controllers/default.py&#x27;), (&lt;lazyT &#x27;View&#x27;&gt;, False, &#x27;/admin/default/edit/Cifra/views/default/evernote.html&#x27;), (&lt;lazyT &#x27;Layout&#x27;&gt;, False, &#x27;/admin/default/edit/Cifra/views/layout.html&#x27;), (&lt;lazyT &#x27;Stylesheet&#x27;&gt;, False, &#x27;/admin/default/edit/Cifra/static/css/web2py.css&#x27;), (&lt;lazyT &#x27;DB Model&#x27;&gt;, False, &#x27;/admin/default/edit/Cifra/models/db.py&#x27;), (&lt;lazyT &#x27;Menu Model&#x27;&gt;, False, &#x27;/admin/default/edit/Cifra/models/menu.py&#x27;), (&lt;lazyT &#x27;Database&#x27;&gt;, False, &#x27;/Cifra/appadmin/index&#x27;), (&lt;lazyT &#x27;Errors&#x27;&gt;, False, &#x27;/admin/default/errors/Cifra&#x27;), (&lt;lazyT &#x27;About&#x27;&gt;, False, &#x27;/admin/default/about/Cifra&#x27;)]</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>web2py.com</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>http://www.web2py.com</div></td></tr><tr><td><div>[(&lt;lazyT &#x27;Download&#x27;&gt;, False, &#x27;http://www.web2py.com/examples/default/download&#x27;), (&lt;lazyT &#x27;Support&#x27;&gt;, False, &#x27;http://www.web2py.com/examples/default/support&#x27;), (&lt;lazyT &#x27;Demo&#x27;&gt;, False, &#x27;http://web2py.com/demo_admin&#x27;), (&lt;lazyT &#x27;Quick Examples&#x27;&gt;, False, &#x27;http://web2py.com/examples/default/examples&#x27;), (&lt;lazyT &#x27;FAQ&#x27;&gt;, False, &#x27;http://web2py.com/AlterEgo&#x27;), (&lt;lazyT &#x27;Videos&#x27;&gt;, False, &#x27;http://www.web2py.com/examples/default/videos/&#x27;), (&lt;lazyT &#x27;Free Applications&#x27;&gt;, False, &#x27;http://web2py.com/appliances&#x27;), (&lt;lazyT &#x27;Plugins&#x27;&gt;, False, &#x27;http://web2py.com/plugins&#x27;), (&lt;lazyT &#x27;Layouts&#x27;&gt;, False, &#x27;http://web2py.com/layouts&#x27;), (&lt;lazyT &#x27;Recipes&#x27;&gt;, False, &#x27;http://web2pyslices.com/&#x27;), (&lt;lazyT &#x27;Semantic&#x27;&gt;, False, &#x27;http://web2py.com/semantic&#x27;)]</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>Documentation</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>http://www.web2py.com/book</div></td></tr><tr><td><div>[(&lt;lazyT &#x27;Preface&#x27;&gt;, False, &#x27;http://www.web2py.com/book/default/chapter/00&#x27;), (&lt;lazyT &#x27;Introduction&#x27;&gt;, False, &#x27;http://www.web2py.com/book/default/chapter/01&#x27;), (&lt;lazyT &#x27;Python&#x27;&gt;, False, &#x27;http://www.web2py.com/book/default/chapter/02&#x27;), (&lt;lazyT &#x27;Overview&#x27;&gt;, False, &#x27;http://www.web2py.com/book/default/chapter/03&#x27;), (&lt;lazyT &#x27;The Core&#x27;&gt;, False, &#x27;http://www.web2py.com/book/default/chapter/04&#x27;), (&lt;lazyT &#x27;The Views&#x27;&gt;, False, &#x27;http://www.web2py.com/book/default/chapter/05&#x27;), (&lt;lazyT &#x27;Database&#x27;&gt;, False, &#x27;http://www.web2py.com/book/default/chapter/06&#x27;), (&lt;lazyT &#x27;Forms and Validators&#x27;&gt;, False, &#x27;http://www.web2py.com/book/default/chapter/07&#x27;), (&lt;lazyT &#x27;Email and SMS&#x27;&gt;, False, &#x27;http://www.web2py.com/book/default/chapter/08&#x27;), (&lt;lazyT &#x27;Access Control&#x27;&gt;, False, &#x27;http://www.web2py.com/book/default/chapter/09&#x27;), (&lt;lazyT &#x27;Services&#x27;&gt;, False, &#x27;http://www.web2py.com/book/default/chapter/10&#x27;), (&lt;lazyT &#x27;Ajax Recipes&#x27;&gt;, False, &#x27;http://www.web2py.com/book/default/chapter/11&#x27;), (&lt;lazyT &#x27;Components and Plugins&#x27;&gt;, False, &#x27;http://www.web2py.com/book/default/chapter/12&#x27;), (&lt;lazyT &#x27;Deployment Recipes&#x27;&gt;, False, &#x27;http://www.web2py.com/book/default/chapter/13&#x27;), (&lt;lazyT &#x27;Other Recipes&#x27;&gt;, False, &#x27;http://www.web2py.com/book/default/chapter/14&#x27;), (&lt;lazyT &#x27;Buy this book&#x27;&gt;, False, &#x27;http://stores.lulu.com/web2py&#x27;)]</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>Community</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>None</div></td></tr><tr><td><div>[(&lt;lazyT &#x27;Groups&#x27;&gt;, False, &#x27;http://www.web2py.com/examples/default/usergroups&#x27;), (&lt;lazyT &#x27;Twitter&#x27;&gt;, False, &#x27;http://twitter.com/web2py&#x27;), (&lt;lazyT &#x27;Live Chat&#x27;&gt;, False, &#x27;http://webchat.freenode.net/?channels=web2py&#x27;)]</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>Plugins</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>None</div></td></tr><tr><td><div>[(&#x27;plugin_wiki&#x27;, False, &#x27;http://web2py.com/examples/default/download&#x27;), (&lt;lazyT &#x27;Other Plugins&#x27;&gt;, False, &#x27;http://web2py.com/plugins&#x27;), (&lt;lazyT &#x27;Layout Plugins&#x27;&gt;, False, &#x27;http://web2py.com/layouts&#x27;)]</div></td></tr></table></div></td></tr></table></div></td></tr></table></div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">meta</td><td style="vertical-align:top;">:</td><td><div><table><tr><td style="font-weight:bold;vertical-align:top;">author</td><td style="vertical-align:top;">:</td><td><div>Your Name &lt;you@example.com&gt;</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">description</td><td style="vertical-align:top;">:</td><td><div>a cool new app</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">generator</td><td style="vertical-align:top;">:</td><td><div>Web2py Web Framework</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">keywords</td><td style="vertical-align:top;">:</td><td><div>web2py, python, framework</div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">models_to_run</td><td style="vertical-align:top;">:</td><td><div><table><tr><td><div>^\\w+\\.py$</div></td></tr><tr><td><div>^default/\\w+\\.py$</div></td></tr><tr><td><div>^default/evernote/\\w+\\.py$</div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">postprocessing</td><td style="vertical-align:top;">:</td><td><div><table></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_client</td><td style="vertical-align:top;">:</td><td><div>127.0.0.1</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_cookie_compression_level</td><td style="vertical-align:top;">:</td><td><div>None</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_cookie_expires</td><td style="vertical-align:top;">:</td><td><div>None</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_cookie_key</td><td style="vertical-align:top;">:</td><td><div>None</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_data_name</td><td style="vertical-align:top;">:</td><td><div>session_data_cifra</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_file</td><td style="vertical-align:top;">:</td><td><div>&lt;open file &#x27;/Users/JoaoBtte/Documents/python/Hello/applications/Cifra/sessions/127.0.0.1-0886abbe-1b27-4724-80a7-9dc2094d7598&#x27;, mode &#x27;rb+&#x27; at 0x106deff60&gt;</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_filename</td><td style="vertical-align:top;">:</td><td><div>/Users/JoaoBtte/Documents/python/Hello/applications/Cifra/sessions/127.0.0.1-0886abbe-1b27-4724-80a7-9dc2094d7598</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_hash</td><td style="vertical-align:top;">:</td><td><div>a89579d23e6e8bb1161062686b1e7d5a</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_id</td><td style="vertical-align:top;">:</td><td><div>127.0.0.1-0886abbe-1b27-4724-80a7-9dc2094d7598</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_id_name</td><td style="vertical-align:top;">:</td><td><div>session_id_cifra</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_locked</td><td style="vertical-align:top;">:</td><td><div>True</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_masterapp</td><td style="vertical-align:top;">:</td><td><div>Cifra</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_new</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_storage_type</td><td style="vertical-align:top;">:</td><td><div>file</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">status</td><td style="vertical-align:top;">:</td><td><div>200</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">subtitle</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">title</td><td style="vertical-align:top;">:</td><td><div>Cifra</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">view</td><td style="vertical-align:top;">:</td><td><div>default/evernote.html</div></td></tr></table></div>'
+tRp388
+sS'locals'
+p389
+(dp390
+S'err'
+p391
+S'None'
+p392
+sS'host'
+p393
+S"'sandbox.evernote.com'"
+p394
+sS'timeout'
+p395
+S'<object object>'
+p396
+sS'address'
+p397
+S"('sandbox.evernote.com', 443)"
+p398
+sS'source_address'
+p399
+S'None'
+p400
+sS'port'
+p401
+S'443'
+p402
+sssS'traceback'
+p403
+S'Traceback (most recent call last):\n  File "/Users/JoaoBtte/Documents/python/Hello/gluon/restricted.py", line 217, in restricted\n    exec ccode in environment\n  File "/Users/JoaoBtte/Documents/python/Hello/applications/Cifra/controllers/default.py", line 67, in <module>\n  File "/Users/JoaoBtte/Documents/python/Hello/gluon/globals.py", line 378, in <lambda>\n    self._caller = lambda f: f()\n  File "/Users/JoaoBtte/Documents/python/Hello/applications/Cifra/controllers/default.py", line 30, in evernote\n    evernote_song.evernote_song(session.name, session.banda, session.letra)\n  File "applications/Cifra/modules/evernote_song.py", line 40, in evernote_song\n    UserStoreConstants.EDAM_VERSION_MINOR\n  File "/Users/JoaoBtte/Documents/python/Hello/site-packages/evernote/api/client.py", line 132, in delegate_method\n    return targetMethod(*args, **kwargs)\n  File "/Users/JoaoBtte/Documents/python/Hello/site-packages/evernote/edam/userstore/UserStore.py", line 490, in checkVersion\n    self.send_checkVersion(clientName, edamVersionMajor, edamVersionMinor)\n  File "/Users/JoaoBtte/Documents/python/Hello/site-packages/evernote/edam/userstore/UserStore.py", line 501, in send_checkVersion\n    self._oprot.trans.flush()\n  File "/Users/JoaoBtte/Documents/python/Hello/site-packages/thrift/transport/THttpClient.py", line 125, in _f\n    result = f(*args, **kwargs)\n  File "/Users/JoaoBtte/Documents/python/Hello/site-packages/thrift/transport/THttpClient.py", line 151, in flush\n    self.__http.endheaders()\n  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/httplib.py", line 951, in endheaders\n    self._send_output(message_body)\n  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/httplib.py", line 811, in _send_output\n    self.send(msg)\n  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/httplib.py", line 773, in send\n    self.connect()\n  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/httplib.py", line 1154, in connect\n    self.timeout, self.source_address)\n  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/socket.py", line 553, in create_connection\n    for res in getaddrinfo(host, port, 0, SOCK_STREAM):\ngaierror: [Errno 8] nodename nor servname provided, or not known\n'
+p404
+s.
