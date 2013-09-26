@@ -10,7 +10,7 @@ def evernote_song(title, band, song):
     from gluon.evernote.edam.userstore import constants as UserStoreConstants
     from gluon.evernote.edam.type import ttypes as Types
 
-    from evernote.api.client import EvernoteClient
+    from gluon.evernote.api.client import EvernoteClient
 
     # Authenticate with a developer token 
     auth_token = "S=s1:U=7631e:E=14876be762a:C=1411f0d4a2d:P=1cd:A=en-devtoken:V=2:H=905f02804c904b17ff6446a221343374"
