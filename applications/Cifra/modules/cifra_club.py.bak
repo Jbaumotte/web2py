@@ -99,17 +99,3 @@ def remove_cifra_club(name):
     name = name.split("|")[1]
 
     return name
-
-def show_music(archive):
-    ## Checking if the music exists, if so opening the archive
-    ## if not returning error message
-    archive = './Cifras/'+archive+'.txt'
-    if os.path.exists(archive):
-        musica = open(archive, 'r')
-    else:
-        print("\nConfira o nome do arquivo, porque eu nao to encontrando!\n")
-        return None
-
-    for line in musica:
-        print(line)
-    musica.close()

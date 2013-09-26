@@ -325,3 +325,7 @@
 [2013-09-25 20:55:28] EDIT Cifra/views/default/cifra.html: 16
 [2013-09-25 20:55:54] EDIT Cifra/static/css/web2py.css: -15
 [2013-09-25 22:24:13] EDIT Cifra/modules/evernote_song.py: 0
+[2013-09-26 15:18:53] CREATE pdf.py: 0
+[2013-09-26 15:19:22] EDIT Cifra/modules/pdf.py: 32
+[2013-09-26 15:26:21] EDIT Cifra/modules/evernote_song.py: 0
+[2013-09-26 15:38:24] EDIT Cifra/modules/cifra_club.py: -24

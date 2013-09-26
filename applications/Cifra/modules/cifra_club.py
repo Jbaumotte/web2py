@@ -6,24 +6,25 @@
 ## Uses Beatiful Soup to parse the website
 ##
 
-##import library to do http requests:
-import urllib
-
-##import beautiful soup parser:
-from bs4 import BeautifulSoup
-
-## import os to create the folder if it does not exist
-import os
-
-## import module created for evernote
-import evernote_song
 
 def get_song(url):
+
+    ##import library to do http requests:
+    import urllib
+
+    ##import beautiful soup parser:
+    from bs4 import BeautifulSoup
+
+    ## import os to create the folder if it does not exist
+    import os
+
+    ## import module created for evernote
+    #import evernote_song
 
     ## Testing address
     #url = "https://www.cifraclub.com.br/nayambing-blues/trem-do-amor/"
 
-    ##download the file:    
+    ##download the file:
     html = urllib.urlopen(url)
 
     ##convert to string:
@@ -50,45 +51,6 @@ def get_song(url):
 
     return name, nome_musica, letra
 
-
-def salvar_txt(url):
-
-    ## Calling function to get song
-    ## cifra[0] = name; cifra[1] = nome_musica; cifra[2] = letra
-    cifra = get_song(url)
-
-    ## Checking if folder exists, if not creating
-    directory = './Cifras'
-    if not os.path.exists(directory):
-        os.makedirs(directory)
-
-    ##creating a file txt and writing the song in it
-    arquivo = directory+"/"+cifra[1]+".txt"
-    f=open(arquivo,'w+')
-    f.write(cifra[0] + cifra[2])
-    f.close()
-
-    ## Printing the song name and the isolated
-    ##section without the html references
-    ##(used as I was developing, removed after started printing into txt)
-    #print(name) 
-    #print(letra)
-
-    ##Checking if file was created
-    if os.path.exists(arquivo):
-        print ("\n"+cifra[1]+".txt foi criado!\n")
-    else:
-        print("\n Aconteceu alguma coisa! Nao deu certo")
-
-
-def ever_note(url):
-
-    cifra = get_song(url)
-
-    ## Calling evernote module
-    evernote_song.evernote_song(cifra[0], cifra[2])
-
-    return ("Saved on evernote")
 
 def subs_name(name):
     return name.replace(" ", "_")

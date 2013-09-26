@@ -7,8 +7,8 @@
 def evernote_song(title, band, song):
     import hashlib
     import binascii
-    import evernote.edam.userstore.constants as UserStoreConstants
-    import evernote.edam.type.ttypes as Types
+    from evernote.edam.userstore import constants as UserStoreConstants
+    from evernote.edam.type import ttypes as Types
 
     from evernote.api.client import EvernoteClient
 
