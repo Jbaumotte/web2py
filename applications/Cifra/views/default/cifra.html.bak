@@ -15,7 +15,7 @@
       }
 
       #pdf_button {
-        background:url(/static/pdficon.PNG) no-repeat;
+        background:url(/Cifra/static/pdficon.PNG) no-repeat;
         cursor:pointer;
         width: 110px;
         height: 100px;
@@ -33,9 +33,12 @@
 
 <div id="left_sidebar">
     {{block right_sidebar}}
-    <form >
+   <!-- <form >
         <INPUT id="evernote" type="button" value=""
             onclick="ajax('evernote',[''],':eval')"/>
+    </form>-->
+    <form action="evernote">
+        <button id="evernote" type="submit"></button>
     </form>
     <br>
     <form action="get_me_a_pdf">

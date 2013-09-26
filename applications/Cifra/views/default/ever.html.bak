@@ -1,3 +1,2 @@
 {{extend 'layout.html'}}
-<h1>Este é o template default/ever.html</h1>
-{{=BEAUTIFY(response._vars)}}
+<h1>Musica gravada!</h1>

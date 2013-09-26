@@ -26,11 +26,14 @@ def cifra():
     return dict()
 
 def evernote():
-    import evernote_song
-    evernote_song.evernote_song(session.name, session.banda, session.letra)
-    response.flash='Gravado no Evernote!'
-    return ("")
+    #import evernote_song
+    #evernote_song.evernote_song(session.name, session.banda, session.letra)
+    #response.flash='Gravado no Evernote!'
+    redirect(URL('ever'))
+    return dict()
 
+def ever():
+    return("Good Job!")
 
 
 def get_me_a_pdf():
