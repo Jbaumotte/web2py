@@ -2,16 +2,16 @@ import sys
 import functools
 import inspect
 import re
-import oauth2 as oauth
+import gluon.oauth2 as oauth
 import urllib
 import urlparse
 
-import evernote.edam.userstore.UserStore as UserStore
-import evernote.edam.notestore.NoteStore as NoteStore
-import evernote.edam.userstore.constants as UserStoreConstants
+import gluon.evernote.edam.userstore.UserStore as UserStore
+import gluon.evernote.edam.notestore.NoteStore as NoteStore
+import gluon.evernote.edam.userstore.constants as UserStoreConstants
 
-import thrift.protocol.TBinaryProtocol as TBinaryProtocol
-import thrift.transport.THttpClient as THttpClient
+import gluon.thrift.protocol.TBinaryProtocol as TBinaryProtocol
+import gluon.thrift.transport.THttpClient as THttpClient
 
 
 class EvernoteClient(object):
