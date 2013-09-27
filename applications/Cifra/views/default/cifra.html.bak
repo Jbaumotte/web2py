@@ -33,13 +33,13 @@
 
 <div id="left_sidebar">
     {{block right_sidebar}}
-   <!-- <form >
+    <form >
         <INPUT id="evernote" type="button" value=""
             onclick="ajax('evernote',[''],':eval')"/>
-    </form>-->
-    <form action="evernote">
-        <button id="evernote" type="submit"></button>
     </form>
+    <!--<form action="evernote">
+        <button id="evernote" type="submit"></button>
+    </form>-->
     <br>
     <form action="get_me_a_pdf">
         <button id="pdf_button" type="submit"></button>

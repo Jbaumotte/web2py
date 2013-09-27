@@ -363,3 +363,6 @@
 [2013-09-26 23:46:28] EDIT Cifra/controllers/default.py: 0
 [2013-09-26 23:47:39] EDIT Cifra/controllers/default.py: 0
 [2013-09-26 23:47:41] EDIT Cifra/controllers/default.py: 0
+[2013-09-27 09:32:13] EDIT Cifra/views/default/cifra.html: 0
+[2013-09-27 09:32:43] EDIT Cifra/views/default/cifra.html: -3
+[2013-09-27 09:33:01] EDIT Cifra/controllers/default.py: -5

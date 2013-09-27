@@ -32,12 +32,6 @@ def evernote():
     #redirect(URL('ever'))
     return ("")
 
-def ever():
-    import evernote_song
-    evernote_song.evernote_song(session.name, session.banda, session.letra)
-    response.flash='Gravado no Evernote!'
-    return("Good Job!")
-
 
 def get_me_a_pdf():
 
