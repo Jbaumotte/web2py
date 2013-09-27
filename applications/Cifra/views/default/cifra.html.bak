@@ -6,7 +6,7 @@
         font-size: 48px;
       }
       #evernote {
-        background:url(/Cifra/static/EvernoteIcon.PNG) no-repeat;
+        background:url("https://pure-hollows-1022.herokuapp.com/Cifra/static/EvernoteIcon.png") no-repeat;
         cursor:pointer;
         width: 110px;
         height: 100px;
@@ -15,7 +15,7 @@
       }
 
       #pdf_button {
-        background:url(/Cifra/static/pdficon.PNG) no-repeat;
+        background:url("./Cifra/static/pdficon.PNG") no-repeat;
         cursor:pointer;
         width: 110px;
         height: 100px;
@@ -37,9 +37,6 @@
         <INPUT id="evernote" type="button" value=""
             onclick="ajax('evernote',[''],':eval')"/>
     </form>
-    <!--<form action="evernote">
-        <button id="evernote" type="submit"></button>
-    </form>-->
     <br>
     <form action="get_me_a_pdf">
         <button id="pdf_button" type="submit"></button>
