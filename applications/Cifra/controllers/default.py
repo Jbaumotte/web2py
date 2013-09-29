@@ -19,7 +19,7 @@ def index():
         redirect(URL('cifra'))
     return dict(form=form)
 
-
+@auth.requires_login()
 def cifra():
     response.title = "Minhas Cifras"
     response.subtitles = session.name+"-"+session.banda
@@ -63,3 +63,26 @@ def get_me_a_pdf():
     os.unlink(tmpfilename)
     response.headers['Content-Type']='application/pdf'
     return data
+
+def update_song():
+    nova_letra = list(request.post_vars.keys())
+    session.letra = nova_letra[0]
+    response.flash='Cifra Atualizada'
+    return dict()
+
+def user():
+    """
+    exposes:
+    http://..../[app]/default/user/login
+    http://..../[app]/default/user/logout
+    http://..../[app]/default/user/register
+    http://..../[app]/default/user/profile
+    http://..../[app]/default/user/retrieve_password
+    http://..../[app]/default/user/change_password
+    http://..../[app]/default/user/manage_users (requires membership in
+    use @auth.requires_login()
+        @auth.requires_membership('group name')
+        @auth.requires_permission('read','table name',record_id)
+    to decorate functions that need access control
+    """
+    return dict(form=auth())

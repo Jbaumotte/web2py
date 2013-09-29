@@ -2,70 +2,39 @@
 
 {{block head}}
     <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Lily Script One">
-    <style>
-        html{
-            background-color: black
-            color: white;
-        }
-        #header {
-            font-family: 'Lily Script One';
-            font-size: 48px;
-        }
-        #evernote {
-            background:url("https://pure-hollows-1022.herokuapp.com/Cifra/static/EvernoteIcon.png") no-repeat;
-            cursor:pointer;
-            width: 110px;
-            height: 100px;
-            border: none;
-            background-size: contain;
-        }
-
-        #pdf_button {
-            background:url("https://pure-hollows-1022.herokuapp.com/Cifra/static/pdficon.png") no-repeat;
-            cursor:pointer;
-            width: 110px;
-            height: 100px;
-            border: none;
-            background-size: contain;
-        }
-
-
-        .span9 {
-            width:45%;
-            padding-left: 100px;
-            text-align:center;
-            vertical-align:middle;
-            background-color: white;
-            color: black;
-        }
-
-
-        #save{
-            display: none;
-            margin: 5px 10px 10px;
-        }
-        
-        <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
-
-    </style>
+    <link href="/Cifra/static/css/cifra.css" rel="stylesheet" type="text/css" />
+    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
 {{end}}
 
 
 {{block center}}
 <script>
-    
+
         $(".span9").click(function (e) {
             $("#save").show();
             e.stopPropagation();
         });
-     
-    $(document).click(function() {
-        $("#save").hide();
+
+        $(document).click(function() {
+            $("#save").hide();
+         });
+
+    $(document).ready(function(){
+        var editedContent;
+        $('#save').click (function(){
+            editedContent = $('#lyrics').html();
+            $.ajax({
+            type: "POST",
+            url: "update_song",
+            data: editedContent,
+            });
+        });
     });
+
 </script>
 
 <p id="lyrics" contenteditable="true">
-    <button id="save">Save</button>
+
     {{=session.letra}}
 </p>
 
@@ -81,5 +50,6 @@
         <form action="get_me_a_pdf">
             <button id="pdf_button" type="submit"></button>
         </form>
+        <button id="save">Save</button>
     </div>
 {{end}}
