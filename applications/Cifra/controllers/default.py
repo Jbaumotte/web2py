@@ -19,7 +19,7 @@ def index():
         redirect(URL('cifra'))
     return dict(form=form)
 
-@auth.requires_login()
+#@auth.requires_login()
 def cifra():
     response.title = "Minhas Cifras"
     response.subtitles = session.name+"-"+session.banda
