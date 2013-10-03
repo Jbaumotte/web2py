@@ -177,6 +177,7 @@
 'Registre-se': 'Registre-se',
 'reload': 'reload',
 'Remember me (for 30 days)': 'Remember me (for 30 days)',
+'Request reset password': 'Request reset password',
 'Reset Password key': 'Reset Password key',
 'Resources': 'Resources',
 'Role': 'Role',

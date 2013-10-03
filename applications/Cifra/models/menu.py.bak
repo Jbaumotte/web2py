@@ -25,13 +25,13 @@ response.google_analytics_id = None
 
 response.menu = [
     (T('Home'), False, URL('default', 'index'), []),
-    (T('Evernote'), False, URL('default', 'index'), []),
+    (T('Evernote'), True, URL('default', 'index'), []),
     (T('PDF'), False, URL('default', 'index'), []),
     (T('Imprimir'), False, URL('default', 'index'), [])
 
 ]
 
-DEVELOPMENT_MENU = True
+DEVELOPMENT_MENU = False
 
 #########################################################################
 ## provide shortcuts for development. remove in production

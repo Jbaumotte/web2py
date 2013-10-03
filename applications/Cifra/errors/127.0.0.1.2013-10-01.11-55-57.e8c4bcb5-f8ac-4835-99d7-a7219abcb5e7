@@ -1,0 +1,379 @@
+(dp1
+S'output'
+p2
+S"<type 'exceptions.AttributeError'> 'Rows' object has no attribute 'process'"
+p3
+sS'layer'
+p4
+S'/Users/JoaoBtte/Documents/python/Hello/applications/Cifra/controllers/default.py'
+p5
+sS'code'
+p6
+S'def user():\n    return dict(form=auth())\n\ndef index():\n    import cifra_club\n\n    form2 = SQLFORM.factory(Field(\'url\',\n                                 label=T(\'Insert the URL \'),\n                                 requires=IS_MATCH(\'http://www.cifraclub.com.br/\', error_message=\'Desculpa, por enquanto, so CifraClub\')))\n\n    if auth.user_id != 0:\n        musica = db.musica\n        user = (db.musica.user == auth.user_id)\n        myset = db(user)\n        form = myset.select(musica.musica, musica.banda)\n\n\n    if form.process().accepted:\n\n        cifra = cifra_club.get_song(form.vars.url)\n        ## cifra[0] = name; cifra[1] = nome_musica; cifra[2] = letra\n        session.name = cifra[0].title().split("-")[0]\n        session.banda = cifra[0].split("-")[1]\n        session.nome_musica = cifra[1]\n        session.letra = cifra[2].strip()\n        redirect(URL(\'cifra\'))\n    \n    return dict(form=form, form2=form2)\n\n@auth.requires_login()\ndef cifra():\n    response.title = "Minhas Cifras"\n    response.subtitles = session.name+"-"+session.banda\n    db.musica.insert(user=auth.user_id, musica=session.name, banda=session.banda)\n    return dict()\n\ndef evernote():\n    import evernote_song\n    evernote_song.evernote_song(session.name, session.banda, session.letra)\n    response.flash=\'Gravado no Evernote!\'\n    #redirect(URL(\'ever\'))\n    return ("")\n\n\ndef get_me_a_pdf():\n    from gluon.reportlab.platypus import *\n    from gluon.reportlab.lib.styles import getSampleStyleSheet\n    from gluon.reportlab.rl_config import defaultPageSize\n    from gluon.reportlab.lib.units import inch, mm\n    from gluon.reportlab.lib.enums import TA_LEFT, TA_RIGHT, TA_CENTER, TA_JUSTIFY\n    from gluon.reportlab.lib import colors\n    from uuid import uuid4\n    from cgi import escape\n    import os\n\n    title = session.name.replace("\\r", "").replace("\\t", "")\n    heading = session.banda\n    text = session.letra\n\n\n    styles = getSampleStyleSheet()\n    tmpfilename=os.path.join(request.folder,\'private\',str(uuid4()))\n    doc = SimpleDocTemplate(tmpfilename)\n    story = []\n    story.append(Paragraph(escape(title),styles["Heading1"]))\n    story.append(Paragraph(escape(heading),styles["Heading3"]))\n    story.append(Preformatted(escape(text), styles["Normal"]))\n    story.append(Spacer(1,2*inch))\n    doc.build(story)\n    data = open(tmpfilename,"rb").read()\n    os.unlink(tmpfilename)\n    response.headers[\'Content-Type\']=\'application/pdf\'\n    return data\n\ndef update_song():\n    nova_letra = list(request.post_vars.keys())\n    session.letra = nova_letra[0]\n    response.flash=\'Cifra Atualizada\'\n    return dict()\n\ndef user():\n    """\n    exposes:\n    http://..../[app]/default/user/login\n    http://..../[app]/default/user/logout\n    http://..../[app]/default/user/register\n    http://..../[app]/default/user/profile\n    http://..../[app]/default/user/retrieve_password\n    http://..../[app]/default/user/change_password\n    http://..../[app]/default/user/manage_users (requires membership in\n    use @auth.requires_login()\n        @auth.requires_membership(\'group name\')\n        @auth.requires_permission(\'read\',\'table name\',record_id)\n    to decorate functions that need access control\n    """\n    return dict(form=auth())\n\nresponse._vars=response._caller(index)\n'
+p7
+sS'snapshot'
+p8
+(dp9
+S'exception'
+p10
+(dp11
+S'__hash__'
+p12
+S"<method-wrapper '__hash__' of exceptions.AttributeError object>"
+p13
+sS'__setattr__'
+p14
+S"<method-wrapper '__setattr__' of exceptions.AttributeError object>"
+p15
+sS'__reduce_ex__'
+p16
+S'<built-in method __reduce_ex__ of exceptions.AttributeError object>'
+p17
+sS'__getslice__'
+p18
+S"<method-wrapper '__getslice__' of exceptions.AttributeError object>"
+p19
+sS'__getitem__'
+p20
+S"<method-wrapper '__getitem__' of exceptions.AttributeError object>"
+p21
+sS'__setstate__'
+p22
+S'<built-in method __setstate__ of exceptions.AttributeError object>'
+p23
+sS'args'
+p24
+S'("\'Rows\' object has no attribute \'process\'",)'
+p25
+sS'__reduce__'
+p26
+S'<built-in method __reduce__ of exceptions.AttributeError object>'
+p27
+sS'__str__'
+p28
+S"<method-wrapper '__str__' of exceptions.AttributeError object>"
+p29
+sS'__format__'
+p30
+S'<built-in method __format__ of exceptions.AttributeError object>'
+p31
+sS'__getattribute__'
+p32
+S"<method-wrapper '__getattribute__' of exceptions.AttributeError object>"
+p33
+sS'__class__'
+p34
+S"<type 'exceptions.AttributeError'>"
+p35
+sS'__unicode__'
+p36
+S'<built-in method __unicode__ of exceptions.AttributeError object>'
+p37
+sS'__delattr__'
+p38
+S"<method-wrapper '__delattr__' of exceptions.AttributeError object>"
+p39
+sS'__subclasshook__'
+p40
+S'<built-in method __subclasshook__ of type object>'
+p41
+sS'__repr__'
+p42
+S"<method-wrapper '__repr__' of exceptions.AttributeError object>"
+p43
+sS'__dict__'
+p44
+S'{}'
+p45
+sS'__sizeof__'
+p46
+S'<built-in method __sizeof__ of exceptions.AttributeError object>'
+p47
+sS'__doc__'
+p48
+S"'Attribute not found.'"
+p49
+sS'__init__'
+p50
+S"<method-wrapper '__init__' of exceptions.AttributeError object>"
+p51
+sS'__new__'
+p52
+S'<built-in method __new__ of type object>'
+p53
+ssS'evalue'
+p54
+S"'Rows' object has no attribute 'process'"
+p55
+sS'request'
+p56
+cgluon.html
+XML_unpickle
+p57
+(S's7\\\x00\x00<div><table><tr><td style="font-weight:bold;vertical-align:top;">ajax</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">application</td><td style="vertical-align:top;">:</td><td><div>Cifra</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">args</td><td style="vertical-align:top;">:</td><td><div><table></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">cid</td><td style="vertical-align:top;">:</td><td><div>None</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">client</td><td style="vertical-align:top;">:</td><td><div>127.0.0.1</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">controller</td><td style="vertical-align:top;">:</td><td><div>default</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">cookies</td><td style="vertical-align:top;">:</td><td><div><table><tr><td style="font-weight:bold;vertical-align:top;">session_id_admin</td><td style="vertical-align:top;">:</td><td><div>127.0.0.1-84987252-300a-4b58-8209-e108f5b60dfa<table><tr><td style="font-weight:bold;vertical-align:top;">comment</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">domain</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">expires</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">httponly</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">max-age</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">path</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">secure</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">version</td><td style="vertical-align:top;">:</td><td><div></div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_id_cifra</td><td style="vertical-align:top;">:</td><td><div>127.0.0.1-a552478f-331c-404c-84d4-dea9d4afd202<table><tr><td style="font-weight:bold;vertical-align:top;">comment</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">domain</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">expires</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">httponly</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">max-age</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">path</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">secure</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">version</td><td style="vertical-align:top;">:</td><td><div></div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_id_welcome</td><td style="vertical-align:top;">:</td><td><div>127.0.0.1-b4ccd57d-5a82-4a06-af81-3aefcfba21ef<table><tr><td style="font-weight:bold;vertical-align:top;">comment</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">domain</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">expires</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">httponly</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">max-age</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">path</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">secure</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">version</td><td style="vertical-align:top;">:</td><td><div></div></td></tr></table></div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">env</td><td style="vertical-align:top;">:</td><td><div><table><tr><td style="font-weight:bold;vertical-align:top;">HTTP_ACCEPT</td><td style="vertical-align:top;">:</td><td><div>text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">HTTP_ACCEPT_ENCODING</td><td style="vertical-align:top;">:</td><td><div>gzip,deflate,sdch</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">HTTP_ACCEPT_LANGUAGE</td><td style="vertical-align:top;">:</td><td><div>pt-BR,pt;q=0.8,en-US;q=0.6,en;q=0.4</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">HTTP_CONNECTION</td><td style="vertical-align:top;">:</td><td><div>keep-alive</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">HTTP_COOKIE</td><td style="vertical-align:top;">:</td><td><div>session_id_welcome=127.0.0.1-b4ccd57d-5a82-4a06-af81-3aefcfba21ef; session_id_admin=127.0.0.1-84987252-300a-4b58-8209-e108f5b60dfa; session_id_cifra=127.0.0.1-a552478f-331c-404c-84d4-dea9d4afd202</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">HTTP_HOST</td><td style="vertical-align:top;">:</td><td><div>127.0.0.1:8000</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">HTTP_REFERER</td><td style="vertical-align:top;">:</td><td><div>http://127.0.0.1:8000/Cifra/default/cifra</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">HTTP_USER_AGENT</td><td style="vertical-align:top;">:</td><td><div>Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/29.0.1547.76 Safari/537.36</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">PATH_INFO</td><td style="vertical-align:top;">:</td><td><div>/Cifra/default/index</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">QUERY_STRING</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">REMOTE_ADDR</td><td style="vertical-align:top;">:</td><td><div>127.0.0.1</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">REMOTE_PORT</td><td style="vertical-align:top;">:</td><td><div>62160</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">REQUEST_METHOD</td><td style="vertical-align:top;">:</td><td><div>GET</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">SCRIPT_NAME</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">SERVER_NAME</td><td style="vertical-align:top;">:</td><td><div>MacBook-Pro-de-Joao.local</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">SERVER_PORT</td><td style="vertical-align:top;">:</td><td><div>8000</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">SERVER_PROTOCOL</td><td style="vertical-align:top;">:</td><td><div>HTTP/1.1</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">SERVER_SOFTWARE</td><td style="vertical-align:top;">:</td><td><div>Rocket 1.2.6</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">app_folders</td><td style="vertical-align:top;">:</td><td><div>set([&#x27;/Users/JoaoBtte/Documents/python/Hello/applications/admin/&#x27;, &#x27;/Users/JoaoBtte/Documents/python/Hello/applications/welcome/&#x27;, &#x27;/Users/JoaoBtte/Documents/python/Hello/applications/Cifra/&#x27;])</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">applications_parent</td><td style="vertical-align:top;">:</td><td><div>/Users/JoaoBtte/Documents/python/Hello</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">cmd_args</td><td style="vertical-align:top;">:</td><td><div><table></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">cmd_options</td><td style="vertical-align:top;">:</td><td><div>&lt;Values at 0x10df3b830: {&#x27;verbose&#x27;: False, &#x27;ip&#x27;: &#x27;127.0.0.1&#x27;, &#x27;debuglevel&#x27;: 30, &#x27;with_scheduler&#x27;: False, &#x27;ips&#x27;: [&#x27;fe80::22c9:d0ff:fed9:645f%en1&#x27;, &#x27;192.168.0.22&#x27;], &#x27;shutdown_timeout&#x27;: 5, &#x27;taskbar&#x27;: False, &#x27;with_coverage&#x27;: False, &#x27;port&#x27;: 8000, &#x27;maxthreads&#x27;: None, &#x27;softcron&#x27;: False, &#x27;server_name&#x27;: &#x27;MacBook-Pro-de-Joao.local&#x27;, &#x27;bpython&#x27;: False, &#x27;nogui&#x27;: False, &#x27;pid_filename&#x27;: &#x27;httpserver.pid&#x27;, &#x27;extcron&#x27;: False, &#x27;runcron&#x27;: False, &#x27;run_system_tests&#x27;: False, &#x27;test&#x27;: None, &#x27;folder&#x27;: &#x27;/Users/JoaoBtte/Documents/python/Hello&#x27;, &#x27;config&#x27;: &#x27;&#x27;, &#x27;minthreads&#x27;: None, &#x27;winservice&#x27;: &#x27;&#x27;, &#x27;shell&#x27;: None, &#x27;run&#x27;: &#x27;&#x27;, &#x27;log_filename&#x27;: &#x27;httpserver.log&#x27;, &#x27;profiler_dir&#x27;: None, &#x27;args&#x27;: [&#x27;&#x27;], &#x27;socket_timeout&#x27;: 5, &#x27;ssl_ca_certificate&#x27;: None, &#x27;scheduler&#x27;: None, &#x27;interfaces&#x27;: None, &#x27;ssl_private_key&#x27;: &#x27;&#x27;, &#x27;scheduler_groups&#x27;: None, &#x27;password&#x27;: &#x27;&lt;ask&gt;&#x27;, &#x27;request_queue_size&#x27;: 5, &#x27;ssl_certificate&#x27;: &#x27;&#x27;, &#x27;cronjob&#x27;: False, &#x27;numthreads&#x27;: None, &#x27;quiet&#x27;: False, &#x27;import_models&#x27;: False, &#x27;timeout&#x27;: 10, &#x27;plain&#x27;: False, &#x27;nobanner&#x27;: False}&gt;</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">db_sessions</td><td style="vertical-align:top;">:</td><td><div>set([])</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">debugging</td><td style="vertical-align:top;">:</td><td><div>True</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">gluon_parent</td><td style="vertical-align:top;">:</td><td><div>/Users/JoaoBtte/Documents/python/Hello</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">http_accept</td><td style="vertical-align:top;">:</td><td><div>text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">http_accept_encoding</td><td style="vertical-align:top;">:</td><td><div>gzip,deflate,sdch</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">http_accept_language</td><td style="vertical-align:top;">:</td><td><div>pt-BR,pt;q=0.8,en-US;q=0.6,en;q=0.4</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">http_connection</td><td style="vertical-align:top;">:</td><td><div>keep-alive</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">http_cookie</td><td style="vertical-align:top;">:</td><td><div>session_id_welcome=127.0.0.1-b4ccd57d-5a82-4a06-af81-3aefcfba21ef; session_id_admin=127.0.0.1-84987252-300a-4b58-8209-e108f5b60dfa; session_id_cifra=127.0.0.1-a552478f-331c-404c-84d4-dea9d4afd202</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">http_host</td><td style="vertical-align:top;">:</td><td><div>127.0.0.1:8000</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">http_referer</td><td style="vertical-align:top;">:</td><td><div>http://127.0.0.1:8000/Cifra/default/cifra</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">http_user_agent</td><td style="vertical-align:top;">:</td><td><div>Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/29.0.1547.76 Safari/537.36</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">is_jython</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">is_pypy</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">is_source</td><td style="vertical-align:top;">:</td><td><div>True</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">local_hosts</td><td style="vertical-align:top;">:</td><td><div><table><tr><td><div>fe80::22c9:d0ff:fed9:645f%en1</div></td></tr><tr><td><div>::ffff:127.0.0.1</div></td></tr><tr><td><div>::1</div></td></tr><tr><td><div>192.168.0.22</div></td></tr><tr><td><div>MacBook-Pro-de-Joao.local</div></td></tr><tr><td><div>127.0.0.1</div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">path_info</td><td style="vertical-align:top;">:</td><td><div>/Cifra/default/index</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">query_string</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">remote_addr</td><td style="vertical-align:top;">:</td><td><div>127.0.0.1</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">remote_port</td><td style="vertical-align:top;">:</td><td><div>62160</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">request_method</td><td style="vertical-align:top;">:</td><td><div>GET</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">request_uri</td><td style="vertical-align:top;">:</td><td><div>/Cifra/default/index</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">script_name</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">server_name</td><td style="vertical-align:top;">:</td><td><div>MacBook-Pro-de-Joao.local</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">server_port</td><td style="vertical-align:top;">:</td><td><div>8000</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">server_protocol</td><td style="vertical-align:top;">:</td><td><div>HTTP/1.1</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">server_software</td><td style="vertical-align:top;">:</td><td><div>Rocket 1.2.6</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">web2py_path</td><td style="vertical-align:top;">:</td><td><div>/Users/JoaoBtte/Documents/python/Hello</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">web2py_version</td><td style="vertical-align:top;">:</td><td><div>2.6.2-stable+timestamp.2013.09.13.22.53.04</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi.errors</td><td style="vertical-align:top;">:</td><td><div>&lt;open file &#x27;&lt;stderr&gt;&#x27;, mode &#x27;w&#x27; at 0x10cfc7270&gt;</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi.file_wrapper</td><td style="vertical-align:top;">:</td><td><div>&lt;class wsgiref.util.FileWrapper at 0x10df5b328&gt;</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi.input</td><td style="vertical-align:top;">:</td><td><div>&lt;socket._fileobject object at 0x1128956d0&gt;</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi.multiprocess</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi.multithread</td><td style="vertical-align:top;">:</td><td><div>True</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi.run_once</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi.url_scheme</td><td style="vertical-align:top;">:</td><td><div>http</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi.version</td><td style="vertical-align:top;">:</td><td><div><table><tr><td><div>1</div></td></tr><tr><td><div>0</div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi_errors</td><td style="vertical-align:top;">:</td><td><div>&lt;open file &#x27;&lt;stderr&gt;&#x27;, mode &#x27;w&#x27; at 0x10cfc7270&gt;</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi_file_wrapper</td><td style="vertical-align:top;">:</td><td><div>&lt;class wsgiref.util.FileWrapper at 0x10df5b328&gt;</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi_input</td><td style="vertical-align:top;">:</td><td><div>&lt;socket._fileobject object at 0x1128956d0&gt;</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi_multiprocess</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi_multithread</td><td style="vertical-align:top;">:</td><td><div>True</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi_run_once</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi_url_scheme</td><td style="vertical-align:top;">:</td><td><div>http</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi_version</td><td style="vertical-align:top;">:</td><td><div><table><tr><td><div>1</div></td></tr><tr><td><div>0</div></td></tr></table></div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">extension</td><td style="vertical-align:top;">:</td><td><div>html</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">folder</td><td style="vertical-align:top;">:</td><td><div>/Users/JoaoBtte/Documents/python/Hello/applications/Cifra/</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">function</td><td style="vertical-align:top;">:</td><td><div>index</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">global_settings</td><td style="vertical-align:top;">:</td><td><div><table><tr><td style="font-weight:bold;vertical-align:top;">app_folders</td><td style="vertical-align:top;">:</td><td><div>set([&#x27;/Users/JoaoBtte/Documents/python/Hello/applications/admin/&#x27;, &#x27;/Users/JoaoBtte/Documents/python/Hello/applications/welcome/&#x27;, &#x27;/Users/JoaoBtte/Documents/python/Hello/applications/Cifra/&#x27;])</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">applications_parent</td><td style="vertical-align:top;">:</td><td><div>/Users/JoaoBtte/Documents/python/Hello</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">cmd_args</td><td style="vertical-align:top;">:</td><td><div><table></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">cmd_options</td><td style="vertical-align:top;">:</td><td><div>&lt;Values at 0x10df3b830: {&#x27;verbose&#x27;: False, &#x27;ip&#x27;: &#x27;127.0.0.1&#x27;, &#x27;debuglevel&#x27;: 30, &#x27;with_scheduler&#x27;: False, &#x27;ips&#x27;: [&#x27;fe80::22c9:d0ff:fed9:645f%en1&#x27;, &#x27;192.168.0.22&#x27;], &#x27;shutdown_timeout&#x27;: 5, &#x27;taskbar&#x27;: False, &#x27;with_coverage&#x27;: False, &#x27;port&#x27;: 8000, &#x27;maxthreads&#x27;: None, &#x27;softcron&#x27;: False, &#x27;server_name&#x27;: &#x27;MacBook-Pro-de-Joao.local&#x27;, &#x27;bpython&#x27;: False, &#x27;nogui&#x27;: False, &#x27;pid_filename&#x27;: &#x27;httpserver.pid&#x27;, &#x27;extcron&#x27;: False, &#x27;runcron&#x27;: False, &#x27;run_system_tests&#x27;: False, &#x27;test&#x27;: None, &#x27;folder&#x27;: &#x27;/Users/JoaoBtte/Documents/python/Hello&#x27;, &#x27;config&#x27;: &#x27;&#x27;, &#x27;minthreads&#x27;: None, &#x27;winservice&#x27;: &#x27;&#x27;, &#x27;shell&#x27;: None, &#x27;run&#x27;: &#x27;&#x27;, &#x27;log_filename&#x27;: &#x27;httpserver.log&#x27;, &#x27;profiler_dir&#x27;: None, &#x27;args&#x27;: [&#x27;&#x27;], &#x27;socket_timeout&#x27;: 5, &#x27;ssl_ca_certificate&#x27;: None, &#x27;scheduler&#x27;: None, &#x27;interfaces&#x27;: None, &#x27;ssl_private_key&#x27;: &#x27;&#x27;, &#x27;scheduler_groups&#x27;: None, &#x27;password&#x27;: &#x27;&lt;ask&gt;&#x27;, &#x27;request_queue_size&#x27;: 5, &#x27;ssl_certificate&#x27;: &#x27;&#x27;, &#x27;cronjob&#x27;: False, &#x27;numthreads&#x27;: None, &#x27;quiet&#x27;: False, &#x27;import_models&#x27;: False, &#x27;timeout&#x27;: 10, &#x27;plain&#x27;: False, &#x27;nobanner&#x27;: False}&gt;</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">db_sessions</td><td style="vertical-align:top;">:</td><td><div>set([])</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">debugging</td><td style="vertical-align:top;">:</td><td><div>True</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">gluon_parent</td><td style="vertical-align:top;">:</td><td><div>/Users/JoaoBtte/Documents/python/Hello</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">is_jython</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">is_pypy</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">is_source</td><td style="vertical-align:top;">:</td><td><div>True</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">local_hosts</td><td style="vertical-align:top;">:</td><td><div><table><tr><td><div>fe80::22c9:d0ff:fed9:645f%en1</div></td></tr><tr><td><div>::ffff:127.0.0.1</div></td></tr><tr><td><div>::1</div></td></tr><tr><td><div>192.168.0.22</div></td></tr><tr><td><div>MacBook-Pro-de-Joao.local</div></td></tr><tr><td><div>127.0.0.1</div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">web2py_version</td><td style="vertical-align:top;">:</td><td><div>2.6.2-stable+timestamp.2013.09.13.22.53.04</div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">is_https</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">is_local</td><td style="vertical-align:top;">:</td><td><div>True</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">is_restful</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">now</td><td style="vertical-align:top;">:</td><td><div>datetime.datetime(2013, 10, 1, 11, 55, 57, 614744)</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">raw_args</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">raw_extension</td><td style="vertical-align:top;">:</td><td><div>None</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">url</td><td style="vertical-align:top;">:</td><td><div>/Cifra/default/index</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">utcnow</td><td style="vertical-align:top;">:</td><td><div>datetime.datetime(2013, 10, 1, 14, 55, 57, 614755)</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">uuid</td><td style="vertical-align:top;">:</td><td><div>Cifra/127.0.0.1.2013-10-01.11-55-57.e8c4bcb5-f8ac-4835-99d7-a7219abcb5e7</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">wsgi</td><td style="vertical-align:top;">:</td><td><div>&lt;gluon.main.LazyWSGI object at 0x11298cad0&gt;</div></td></tr></table></div>'
+tRp58
+sS'frames'
+p59
+(lp60
+(dp61
+S'file'
+p62
+S'/Users/JoaoBtte/Documents/python/Hello/gluon/restricted.py'
+p63
+sS'dump'
+p64
+(dp65
+S'environment'
+p66
+S"{'A': <class 'gluon.html.A'>, 'ANY_OF': <class 'gluon.validators.ANY_OF'>, 'Auth': <class 'gluon.tools.Auth'>, 'B': <class 'gluon.html.B'>, 'BEAUTIFY': <class 'gluon.html.BEAUTIFY'>, 'BODY': <class 'gluon.html.BODY'>, 'BR': <class 'gluon.html.BR'>, 'BUTTON': <class 'gluon.html.BUTTON'>, 'CAT': <class 'gluon.html.CAT'>, 'CENTER': <class 'gluon.html.CENTER'>, ...}"
+p67
+sS'ccode'
+p68
+S'<code object <module> at 0x112850cb0, file "/Use...plications/Cifra/controllers/default.py", line 1>'
+p69
+ssS'lnum'
+p70
+I217
+sS'lines'
+p71
+(dp72
+I212
+S'    try:'
+p73
+sI213
+S'        if isinstance(code, types.CodeType):'
+p74
+sI214
+S'            ccode = code'
+p75
+sI215
+S'        else:'
+p76
+sI216
+S'            ccode = compile2(code, layer)'
+p77
+sI217
+S'        exec ccode in environment'
+p78
+sI218
+S'    except HTTP:'
+p79
+sI219
+S'        raise'
+p80
+sI220
+S'    except RestrictedError:'
+p81
+sI221
+S'        # do not encapsulate (obfuscate) the original RestrictedError'
+p82
+ssS'call'
+p83
+S"(code='def user():\\n    return dict(form=auth())\\n\\ndef in...=auth())\\n\\nresponse._vars=response._caller(index)\\n', environment={'A': <class 'gluon.html.A'>, 'ANY_OF': <class 'gluon.validators.ANY_OF'>, 'Auth': <class 'gluon.tools.Auth'>, 'B': <class 'gluon.html.B'>, 'BEAUTIFY': <class 'gluon.html.BEAUTIFY'>, 'BODY': <class 'gluon.html.BODY'>, 'BR': <class 'gluon.html.BR'>, 'BUTTON': <class 'gluon.html.BUTTON'>, 'CAT': <class 'gluon.html.CAT'>, 'CENTER': <class 'gluon.html.CENTER'>, ...}, layer='/Users/JoaoBtte/Documents/python/Hello/applications/Cifra/controllers/default.py')"
+p84
+sS'func'
+p85
+S'restricted'
+p86
+sa(dp87
+g62
+S'/Users/JoaoBtte/Documents/python/Hello/applications/Cifra/controllers/default.py'
+p88
+sg64
+(dp89
+sg70
+I98
+sg71
+(dp90
+I96
+S'    return dict(form=auth())'
+p91
+sI87
+S'    http://..../[app]/default/user/profile'
+p92
+sI88
+S'    http://..../[app]/default/user/retrieve_password'
+p93
+sI89
+S'    http://..../[app]/default/user/change_password'
+p94
+sI90
+S'    http://..../[app]/default/user/manage_users (requires membership in'
+p95
+sI91
+S'    use @auth.requires_login()'
+p96
+sI92
+S"        @auth.requires_membership('group name')"
+p97
+sI93
+S"        @auth.requires_permission('read','table name',record_id)"
+p98
+sI94
+S'    to decorate functions that need access control'
+p99
+sI95
+S'    """'
+p100
+ssg83
+S'()'
+p101
+sg85
+S'<module>'
+p102
+sa(dp103
+g62
+S'/Users/JoaoBtte/Documents/python/Hello/gluon/globals.py'
+p104
+sg64
+(dp105
+S'self'
+p106
+S'undefined'
+p107
+sS'f'
+S'<function index>'
+p108
+ssg70
+I378
+sg71
+(dp109
+I373
+S'        self.menu = []             # used by the default view layout'
+p110
+sI374
+S'        self.files = []            # used by web2py_ajax.html'
+p111
+sI375
+S'        self.generic_patterns = []  # patterns to allow generic views'
+p112
+sI376
+S"        self.delimiters = ('{{', '}}')"
+p113
+sI377
+S'        self._vars = None'
+p114
+sI378
+S'        self._caller = lambda f: f()'
+p115
+sI379
+S'        self._view_environment = None'
+p116
+sI380
+S'        self._custom_commit = None'
+p117
+sI381
+S'        self._custom_rollback = None'
+p118
+sI382
+S''
+ssg83
+S'(f=<function index>)'
+p119
+sg85
+S'<lambda>'
+p120
+sa(dp121
+g62
+S'/Users/JoaoBtte/Documents/python/Hello/applications/Cifra/controllers/default.py'
+p122
+sg64
+(dp123
+S'form.process'
+p124
+g107
+sS'form'
+p125
+S'<Rows (4)>'
+p126
+ssg70
+I18
+sg71
+(dp127
+I13
+S'        user = (db.musica.user == auth.user_id)'
+p128
+sI14
+S'        myset = db(user)'
+p129
+sI15
+S'        form = myset.select(musica.musica, musica.banda)'
+p130
+sI16
+S''
+sI17
+S''
+sI18
+S'    if form.process().accepted:'
+p131
+sI19
+S''
+sI20
+S'        cifra = cifra_club.get_song(form.vars.url)'
+p132
+sI21
+S'        ## cifra[0] = name; cifra[1] = nome_musica; cifra[2] = letra'
+p133
+sI22
+S'        session.name = cifra[0].title().split("-")[0]'
+p134
+ssg83
+S'()'
+p135
+sg85
+S'index'
+p136
+sasS'pyver'
+p137
+S'Python 2.7.2: /usr/bin/python (prefix: /System/Library/Frameworks/Python.framework/Versions/2.7)'
+p138
+sS'session'
+p139
+g57
+(S's\xb74\x00\x00<div><table><tr><td style="font-weight:bold;vertical-align:top;">auth</td><td style="vertical-align:top;">:</td><td><div><table><tr><td style="font-weight:bold;vertical-align:top;">expiration</td><td style="vertical-align:top;">:</td><td><div>3600</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">hmac_key</td><td style="vertical-align:top;">:</td><td><div>209fad03-4392-4554-83dc-aaf274d4668b</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">last_visit</td><td style="vertical-align:top;">:</td><td><div>datetime.datetime(2013, 10, 1, 11, 53, 3, 409874)</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">remember</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">user</td><td style="vertical-align:top;">:</td><td><div><table><tr><td style="font-weight:bold;vertical-align:top;">email</td><td style="vertical-align:top;">:</td><td><div>joao.btte@gmail.com</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">first_name</td><td style="vertical-align:top;">:</td><td><div>Joao</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">id</td><td style="vertical-align:top;">:</td><td><div>2L</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">last_name</td><td style="vertical-align:top;">:</td><td><div>Baumotte</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">registration_id</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">registration_key</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">reset_password_key</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">username</td><td style="vertical-align:top;">:</td><td><div>jopa</div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">user_groups</td><td style="vertical-align:top;">:</td><td><div><table><tr><td style="font-weight:bold;vertical-align:top;">2</td><td style="vertical-align:top;">:</td><td><div>user_2</div></td></tr></table></div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">banda</td><td style="vertical-align:top;">:</td><td><div> Eric Clapton  </div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">flash</td><td style="vertical-align:top;">:</td><td><div>None</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">letra</td><td style="vertical-align:top;">:</td><td><div>Tom: G\r\n\t\t\nIntro: A   E/G#   F#m   A/E   D/F#   E7(4)   E7\n\nDedilhado intro:\n\n    A               E/G#   F#m      A/E\nE|------------------------------------------\nB|---------2h3p2----5---5--2---2----2---2---\nG|-------2-------2--4------2---2----2---2---\nD|------------------------------------------\nA|-----0------------------------------------\nE|-0h2--------------4-4----2-2---2--0-0---0-\n\n\n\n    D/F#     E7(4) E7   A\nE|------------------------------------------\nB|--3---3----3-----3----2---2---2---2-------\nG|--2---2----2-----1----2---2---2---2-------\nD|------------------------------------------\nA|----------------------0-0---0-0-0---------\nE|--2-2---2--0---0---0----------------------\n\n\nPrimeira parte:\nA             E/G#   F#m  A/E\n  Would you know my name\nD/F#    A/E        E  A/E  E7\n  If I saw you in heaven?\nA           E/G#   F#m  A/E\n  Would it be the same\nD/F#    A/E        E  A/E  E7\n  If I saw you in heaven?\n\nDedilhado:\n\n    A                E/G#   F#m\nE|------------------------------------------\nB|----------2h3p2----5---5--2---------------\nG|--------2-------2--4------2---------------\nD|------------------------------------------\nA|------0-----------------------------------\nE|--0h2--------------4-4----2-2-------------\n\n\n\nE|--5/7-5----------0------------------------\nB|--5/7-5-5/7-5--2--------------------------\nG|--------4/6-4--2--------------------------\nD|------------------------------------------\nA|------------------------------------------\nE|--------0---------------------------------\n\n\n\n    D/F#     A/E           A/E  E7\nE|---------------0--------------------------\nB|--3---3----2h3---0---0---2----3------------\nG|--2---2----2-----1---1---2----4------------\nD|------------------------------------------\nA|------------------------------------------\nE|--2-2---2--0-----0-0---0-0-0--------------\n\n\n\n    A                E/G#   F#m\nE|------------------------------------------\nB|----------2h3p2----5---5--2---------------\nG|--------2-------2--4------2---------------\nD|------------------------------------------\nA|------0-----------------------------------\nE|--0h2--------------4-4----2-2-------------\n\n\n\n  F#\nE|---2-4-4/5-4-2-0---------------------------\nB|-------------------------------------------\nG|---2-4-4/6-4-2-1---------------------------\nD|-------------------------------------------\nA|-------------------------------------------\nE|-------0-----------------------------------\n\n\n\n    D/F#     A/E           A/E  E7\nE|---------------0--------------------------\nB|--3---3----2h3---0---0---2----3------------\nG|--2---2----2-----1---1---2----4------------\nD|------------------------------------------\nA|------------------------------------------\nE|--2-2---2--0-----0-0---0-0-0--------------\n\n\nSegunda parte:\nF#m            Db/F\n  I must be strong\nA7/E        F#7\n  And carry on\n           Bm7            E7(4)\n&#x27;Cause I know I don&#x27;t belong\n\nHere in heaven\n\nDedilhado:\n\n   F#m              Db/F\nE|------2-------2-------1-------1-----------\nB|--2---2---2---2---2---2---2---2-----------\nG|--2---2---2---2---1---1---1---1-----------\nD|------------------------------------------\nA|------------------------------------------\nE|--2-2---2-2-2---2-1-1---1-1-1---1---------\n\n\n\n   A7/E              F#7\nE|------0-------0---------------------------\nB|--2---2---2---2----------------2----------\nG|--0---0---0---0----3---3---4--------------\nD|-------------------2---2------------------\nA|------------------------------------------\nE|--0-0---0-0-0---0--2-2---2---2------------\n\n\n\n    Bm7             E7(4)\nE|------------------------------------------\nB|------3---3---3---3-3---3-----------------\nG|------2---2---2---2-2---2-----------------\nD|------------------------------------------\nA|--2-2---2-2-2-----------------------------\nE|----------------0-----0-------------------\n\n\nIntro com varia\xc3\xa7\xc3\xa3o:\n\n    A                E/G#   F#m\nE|------------------------------------------\nB|----------2h3p2----5---5--2---------------\nG|--------2-------2--4------2---------------\nD|------------------------------------------\nA|------0-----------------------------------\nE|--0h2--------------4-4----2-2-------------\n\n\n\nE|--5/7-5----------0------------------------\nB|--5/7-5--------2--------------------------\nG|--------5/7-5--2--------------------------\nD|--------4/6-4-----------------------------\nA|------------------------------------------\nE|--------0---------------------------------\n\n\n\n    D/F#     E7(4) E7\nE|------------------------------------------\nB|--3---3----3-----3------------------------\nG|--2---2----2-----1------------------------\nD|------------------------------------------\nA|------------------------------------------\nE|--2-2---2--0---0---0----------------------\n\n\n\n    A\nE|------------------------------------------\nB|--2---2----------2h3p2--------------------\nG|--2---2------2h4-------4p2----------------\nD|---------2h4---------------4-2------------\nA|--0-0-------------------------------------\nE|------------------------------------------\n\n\nPrimeira parte com varia\xc3\xa7\xc3\xa3o na letra:\nA            E/G#    F#m  A/E\n  Would you hold my hand\nD/F#    A/E           E  A/E  E7\n  If I saw you in heaven?\nA            E/G#     F#m  A/E\n  Would you help me stand\nD/F#    A/E           E  A/E  E7\n  If I saw you in heaven?\n\nSegunda parte com varia\xc3\xa7\xc3\xa3o na letra:\nF#m             Db/F\n  I&#x27;ll find my way\nA7/E                 F#7\n  Through night and day\n           Bm7             E7(4)\n&#x27;Cause I know I just can stay\n\nHere in heaven\n\n(repete intro com varia\xc3\xa7\xc3\xa3o)\n\nTerceira parte:\nC            G/B      Am7\n  Time can bring you down\n          D/F#       G   D/F#   Em9   D/F#   G\nTime can bend your knees\nC            G/B       Am7\n  Time can break your heart\n          D/F#     G    D/F#\nHave you begging please\n          E\nBegging please\n\nDedilhado:\n\n        C        G/B      Am7      D/F#\nE|----------0--------3--------0-------------\nB|----------1--------3--------1--------3----\nG|--------0---0----0---0----2---2------2----\nD|-----------------------------------0---0--\nA|--0-2-3-----3--2-----2--0-----0-----------\nE|---------------------------------2-----2--\n\n\n\n    G       D/F#    Em9    D/F#   G\nE|------------------------------------------\nB|--3---3---3---3---3---3---3-----3---------\nG|--4---4---2---2---0---0---2-----4---------\nD|------------------------------------------\nA|------------------------------------------\nE|--3-3---3-2-2---2-0-0---0-2--2--3---------\n\n\n\n    C        G/B      Am7      D/F#\nE|------0--------3--------0-----------------\nB|------1--------3--------1--------3--------\nG|----0---0----0---0----2---2------2--------\nD|-------------------------------0---0------\nA|--3-----3--2-----2--0-----0---------------\nE|-----------------------------2-----2------\n\n\n\n    G       D/F      E\nE|------------------------------------------\nB|--3---3---3---3---------------------------\nG|--4---4---2---2--------1-----2-----4------\nD|------------------------------------------\nA|---------------------2---2/4---4/5--------\nE|--3-3---3-2-2---2--0----------------------\n\n\nSolo 2x:\n\nE|--9h10p9----12/14-12-9-------10--97--5--7/9--7-7--\nB|---------10----------------------------------------\nG|------------------------9/11-----97--6--7/9--7-7--\nD|---------------------------------------------------\nA|---------------------------------------------------\nE|---------------------------------------------------\n\n\nBase solo 2x:\n\n        A            E/G#  F#m      A/E\nE|-------------------------------------------\nB|---------2h3p2-----5-----2---2----2---2----\nG|-------2-------2---4-----2---2----2---2----\nD|-------------------------------------------\nA|-----0-------------------------------------\nE|-0h2---------------4-----2-2---2--0-0---0--\n\n\n\n    D/F#     A/E   E      A/E  E7\nE|---------------0--------------------------\nB|--3---3----2h3---0---0---2---3------------\nG|--2---2----2-----1---1---2---4------------\nD|------------------------------------------\nA|------------------------------------------\nE|--2-2---2--0-----0-0---0-0-0--------------\n\n\nSegunda parte com varia\xc3\xa7\xc3\xa3o:\nF#m           Db/F\n  Beyond the door\nA7/E                 F#7\n  There&#x27;s peace I&#x27;m sure\n        Bm7                E7(4)\nAnd I know there&#x27;ll be no more\n\nTears in heaven\n\n(repete intro com varia\xc3\xa7\xc3\xa3o)\n\nPrimeira parte:\nA             E/G#   F#m  A/E\n  Would you know my name\nD/F#    A/E        E  A/E  E7\n  If I saw you in heaven?\nA           E/G#   F#m  A/E\n  Would it be the same\nD/F#    A/E        E  A/E  E7\n  If I saw you in heaven?\n\nSegunda parte:\nF#m            Db/F\n  I must be strong\nA7/E        F#7\n  And carry on\n           Bm7            E7(4)\n&#x27;Cause I know I don&#x27;t belong\n\nFinal:\n            A   E/G#   F#m\nHere in heaven\n           Bm7            E7(4)\n&#x27;Cause I know I don&#x27;t belong\n\nHere in heaven\n\nDedilhado:\n\n   A                 E/G#  F#m      A/E\nE|-------------------------------------------\nB|---------2h3p2-----5-----2---2----2---2----\nG|-------2-------2---4-----2---2----2---2----\nD|-------------------------------------------\nA|-----0-------------------------------------\nE|-0h2---------------4-----2-2---2--0-0---0--\n\n\n\n    Bm7           E7(4)\nE|------------------------------------------\nB|------3---3---3---3-3---3-----------------\nG|------2---2---2---2-2---2-----------------\nD|------------------------------------------\nA|--2-2---2-2-2-----------------------------\nE|----------------0-----0-------------------\n\n\n\n    A                E/G#   F#m\nE|------------------------------------------\nB|----------2h3p2----5---5--2---------------\nG|--------2-------2--4------2---------------\nD|------------------------------------------\nA|------0-----------------------------------\nE|--0h2--------------4-4----2-2-------------\n\n\n\nE|--5/7-5----------0------------------------\nB|--5/7-5--------2--------------------------\nG|--------5/7-5--2--------------------------\nD|--------4/6-4-----------------------------\nA|------------------------------------------\nE|--------0---------------------------------\n\n\n\n    D/F#    E7(4)  E7\nE|------------------------------------------\nB|--3---3----3-----3------------------------\nG|--2---2----2-----1------------------------\nD|------------------------------------------\nA|------------------------------------------\nE|--2-2---2--0---0---0----------------------\n\n\nE|------------------------------------------\nB|--------2--3--2h3p2---------5-------------\nG|------2-------------4-2-4/6---------------\nD|----2-------------------------------------\nA|--0---------------------------------------\nE|------------------------------------------</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">name</td><td style="vertical-align:top;">:</td><td><div> Tears In Heaven </div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">nome_musica</td><td style="vertical-align:top;">:</td><td><div>Tears_in_Heaven</div></td></tr></table></div>'
+tRp140
+sS'etype'
+p141
+S"<type 'exceptions.AttributeError'>"
+p142
+sS'date'
+p143
+S'Tue Oct  1 11:55:57 2013'
+p144
+sS'response'
+p145
+g57
+(S's\xac.\x00\x00<div><table><tr><td style="font-weight:bold;vertical-align:top;">body</td><td style="vertical-align:top;">:</td><td><div>&lt;cStringIO.StringO object at 0x10e424a78&gt;</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">cookies</td><td style="vertical-align:top;">:</td><td><div><table></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">delimiters</td><td style="vertical-align:top;">:</td><td><div><table><tr><td><div>{{</div></td></tr><tr><td><div>}}</div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">files</td><td style="vertical-align:top;">:</td><td><div><table></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">flash</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">generic_patterns</td><td style="vertical-align:top;">:</td><td><div><table></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">google_analytics_id</td><td style="vertical-align:top;">:</td><td><div>None</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">headers</td><td style="vertical-align:top;">:</td><td><div><table><tr><td style="font-weight:bold;vertical-align:top;">X-Powered-By</td><td style="vertical-align:top;">:</td><td><div>web2py</div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">menu</td><td style="vertical-align:top;">:</td><td><div><table><tr><td><div><table><tr><td><div>Home</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>/Cifra/default/index</div></td></tr><tr><td><div><table></table></div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>Evernote</div></td></tr><tr><td><div>True</div></td></tr><tr><td><div>/Cifra/default/index</div></td></tr><tr><td><div><table></table></div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>PDF</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>/Cifra/default/index</div></td></tr><tr><td><div><table></table></div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>Imprimir</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>/Cifra/default/index</div></td></tr><tr><td><div><table></table></div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div><span class="highlighted">web2py</span></div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>http://web2py.com</div></td></tr><tr><td><div><table><tr><td><div><table><tr><td><div>My Sites</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>/admin/default/site</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>This App</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>/admin/default/design/Cifra</div></td></tr><tr><td><div>[(&lt;lazyT &#x27;Controller&#x27;&gt;, False, &#x27;/admin/default/edit/Cifra/controllers/default.py&#x27;), (&lt;lazyT &#x27;View&#x27;&gt;, False, &#x27;/admin/default/edit/Cifra/views/default/index.html&#x27;), (&lt;lazyT &#x27;Layout&#x27;&gt;, False, &#x27;/admin/default/edit/Cifra/views/layout.html&#x27;), (&lt;lazyT &#x27;Stylesheet&#x27;&gt;, False, &#x27;/admin/default/edit/Cifra/static/css/web2py.css&#x27;), (&lt;lazyT &#x27;DB Model&#x27;&gt;, False, &#x27;/admin/default/edit/Cifra/models/db.py&#x27;), (&lt;lazyT &#x27;Menu Model&#x27;&gt;, False, &#x27;/admin/default/edit/Cifra/models/menu.py&#x27;), (&lt;lazyT &#x27;Database&#x27;&gt;, False, &#x27;/Cifra/appadmin/index&#x27;), (&lt;lazyT &#x27;Errors&#x27;&gt;, False, &#x27;/admin/default/errors/Cifra&#x27;), (&lt;lazyT &#x27;About&#x27;&gt;, False, &#x27;/admin/default/about/Cifra&#x27;)]</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>web2py.com</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>http://www.web2py.com</div></td></tr><tr><td><div>[(&lt;lazyT &#x27;Download&#x27;&gt;, False, &#x27;http://www.web2py.com/examples/default/download&#x27;), (&lt;lazyT &#x27;Support&#x27;&gt;, False, &#x27;http://www.web2py.com/examples/default/support&#x27;), (&lt;lazyT &#x27;Demo&#x27;&gt;, False, &#x27;http://web2py.com/demo_admin&#x27;), (&lt;lazyT &#x27;Quick Examples&#x27;&gt;, False, &#x27;http://web2py.com/examples/default/examples&#x27;), (&lt;lazyT &#x27;FAQ&#x27;&gt;, False, &#x27;http://web2py.com/AlterEgo&#x27;), (&lt;lazyT &#x27;Videos&#x27;&gt;, False, &#x27;http://www.web2py.com/examples/default/videos/&#x27;), (&lt;lazyT &#x27;Free Applications&#x27;&gt;, False, &#x27;http://web2py.com/appliances&#x27;), (&lt;lazyT &#x27;Plugins&#x27;&gt;, False, &#x27;http://web2py.com/plugins&#x27;), (&lt;lazyT &#x27;Layouts&#x27;&gt;, False, &#x27;http://web2py.com/layouts&#x27;), (&lt;lazyT &#x27;Recipes&#x27;&gt;, False, &#x27;http://web2pyslices.com/&#x27;), (&lt;lazyT &#x27;Semantic&#x27;&gt;, False, &#x27;http://web2py.com/semantic&#x27;)]</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>Documentation</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>http://www.web2py.com/book</div></td></tr><tr><td><div>[(&lt;lazyT &#x27;Preface&#x27;&gt;, False, &#x27;http://www.web2py.com/book/default/chapter/00&#x27;), (&lt;lazyT &#x27;Introduction&#x27;&gt;, False, &#x27;http://www.web2py.com/book/default/chapter/01&#x27;), (&lt;lazyT &#x27;Python&#x27;&gt;, False, &#x27;http://www.web2py.com/book/default/chapter/02&#x27;), (&lt;lazyT &#x27;Overview&#x27;&gt;, False, &#x27;http://www.web2py.com/book/default/chapter/03&#x27;), (&lt;lazyT &#x27;The Core&#x27;&gt;, False, &#x27;http://www.web2py.com/book/default/chapter/04&#x27;), (&lt;lazyT &#x27;The Views&#x27;&gt;, False, &#x27;http://www.web2py.com/book/default/chapter/05&#x27;), (&lt;lazyT &#x27;Database&#x27;&gt;, False, &#x27;http://www.web2py.com/book/default/chapter/06&#x27;), (&lt;lazyT &#x27;Forms and Validators&#x27;&gt;, False, &#x27;http://www.web2py.com/book/default/chapter/07&#x27;), (&lt;lazyT &#x27;Email and SMS&#x27;&gt;, False, &#x27;http://www.web2py.com/book/default/chapter/08&#x27;), (&lt;lazyT &#x27;Access Control&#x27;&gt;, False, &#x27;http://www.web2py.com/book/default/chapter/09&#x27;), (&lt;lazyT &#x27;Services&#x27;&gt;, False, &#x27;http://www.web2py.com/book/default/chapter/10&#x27;), (&lt;lazyT &#x27;Ajax Recipes&#x27;&gt;, False, &#x27;http://www.web2py.com/book/default/chapter/11&#x27;), (&lt;lazyT &#x27;Components and Plugins&#x27;&gt;, False, &#x27;http://www.web2py.com/book/default/chapter/12&#x27;), (&lt;lazyT &#x27;Deployment Recipes&#x27;&gt;, False, &#x27;http://www.web2py.com/book/default/chapter/13&#x27;), (&lt;lazyT &#x27;Other Recipes&#x27;&gt;, False, &#x27;http://www.web2py.com/book/default/chapter/14&#x27;), (&lt;lazyT &#x27;Buy this book&#x27;&gt;, False, &#x27;http://stores.lulu.com/web2py&#x27;)]</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>Community</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>None</div></td></tr><tr><td><div>[(&lt;lazyT &#x27;Groups&#x27;&gt;, False, &#x27;http://www.web2py.com/examples/default/usergroups&#x27;), (&lt;lazyT &#x27;Twitter&#x27;&gt;, False, &#x27;http://twitter.com/web2py&#x27;), (&lt;lazyT &#x27;Live Chat&#x27;&gt;, False, &#x27;http://webchat.freenode.net/?channels=web2py&#x27;)]</div></td></tr></table></div></td></tr><tr><td><div><table><tr><td><div>Plugins</div></td></tr><tr><td><div>False</div></td></tr><tr><td><div>None</div></td></tr><tr><td><div>[(&#x27;plugin_wiki&#x27;, False, &#x27;http://web2py.com/examples/default/download&#x27;), (&lt;lazyT &#x27;Other Plugins&#x27;&gt;, False, &#x27;http://web2py.com/plugins&#x27;), (&lt;lazyT &#x27;Layout Plugins&#x27;&gt;, False, &#x27;http://web2py.com/layouts&#x27;)]</div></td></tr></table></div></td></tr></table></div></td></tr></table></div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">meta</td><td style="vertical-align:top;">:</td><td><div><table><tr><td style="font-weight:bold;vertical-align:top;">author</td><td style="vertical-align:top;">:</td><td><div>Your Name &lt;you@example.com&gt;</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">description</td><td style="vertical-align:top;">:</td><td><div>a cool new app</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">generator</td><td style="vertical-align:top;">:</td><td><div>Web2py Web Framework</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">keywords</td><td style="vertical-align:top;">:</td><td><div>web2py, python, framework</div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">models_to_run</td><td style="vertical-align:top;">:</td><td><div><table><tr><td><div>^\\w+\\.py$</div></td></tr><tr><td><div>^default/\\w+\\.py$</div></td></tr><tr><td><div>^default/index/\\w+\\.py$</div></td></tr></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">postprocessing</td><td style="vertical-align:top;">:</td><td><div><table></table></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_client</td><td style="vertical-align:top;">:</td><td><div>127.0.0.1</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_cookie_compression_level</td><td style="vertical-align:top;">:</td><td><div>None</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_cookie_expires</td><td style="vertical-align:top;">:</td><td><div>None</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_cookie_key</td><td style="vertical-align:top;">:</td><td><div>None</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_data_name</td><td style="vertical-align:top;">:</td><td><div>session_data_cifra</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_file</td><td style="vertical-align:top;">:</td><td><div>&lt;open file &#x27;/Users/JoaoBtte/Documents/python/Hello/applications/Cifra/sessions/127.0.0.1-a552478f-331c-404c-84d4-dea9d4afd202&#x27;, mode &#x27;rb+&#x27; at 0x10db3c390&gt;</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_filename</td><td style="vertical-align:top;">:</td><td><div>/Users/JoaoBtte/Documents/python/Hello/applications/Cifra/sessions/127.0.0.1-a552478f-331c-404c-84d4-dea9d4afd202</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_hash</td><td style="vertical-align:top;">:</td><td><div>dfa06f890f1f0501fa9eaa08afbf6430</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_id</td><td style="vertical-align:top;">:</td><td><div>127.0.0.1-a552478f-331c-404c-84d4-dea9d4afd202</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_id_name</td><td style="vertical-align:top;">:</td><td><div>session_id_cifra</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_locked</td><td style="vertical-align:top;">:</td><td><div>True</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_masterapp</td><td style="vertical-align:top;">:</td><td><div>Cifra</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_new</td><td style="vertical-align:top;">:</td><td><div>False</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">session_storage_type</td><td style="vertical-align:top;">:</td><td><div>file</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">status</td><td style="vertical-align:top;">:</td><td><div>200</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">subtitle</td><td style="vertical-align:top;">:</td><td><div></div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">title</td><td style="vertical-align:top;">:</td><td><div>Cifra</div></td></tr><tr><td style="font-weight:bold;vertical-align:top;">view</td><td style="vertical-align:top;">:</td><td><div>default/index.html</div></td></tr></table></div>'
+tRp146
+sS'locals'
+p147
+(dp148
+S'cifra_club'
+p149
+S"<module 'applications.Cifra.modules.cifra_club' from 'applications/Cifra/modules/cifra_club.pyc'>"
+p150
+sS'form'
+p151
+S'<Rows (4)>'
+p152
+sS'myset'
+p153
+S"<Set (musica.user = '2')>"
+p154
+sS'form2'
+p155
+S'<gluon.sqlhtml.SQLFORM object>'
+p156
+sS'musica'
+p157
+S'<Table musica (id,user,musica,banda,created_on,editado)>'
+p158
+sS'user'
+p159
+S"<Query (musica.user = '2')>"
+p160
+sssS'traceback'
+p161
+S'Traceback (most recent call last):\n  File "/Users/JoaoBtte/Documents/python/Hello/gluon/restricted.py", line 217, in restricted\n    exec ccode in environment\n  File "/Users/JoaoBtte/Documents/python/Hello/applications/Cifra/controllers/default.py", line 98, in <module>\n  File "/Users/JoaoBtte/Documents/python/Hello/gluon/globals.py", line 378, in <lambda>\n    self._caller = lambda f: f()\n  File "/Users/JoaoBtte/Documents/python/Hello/applications/Cifra/controllers/default.py", line 18, in index\n    if form.process().accepted:\nAttributeError: \'Rows\' object has no attribute \'process\'\n'
+p162
+s.
